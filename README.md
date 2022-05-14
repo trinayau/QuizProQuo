@@ -7,9 +7,14 @@
  * [Trina](https://github.com/trinayau)
 
 ## Project Description
-This is a Lap 3 group project 
+This is a Lap 3 group project to make a quiz using React.
 ## Installation and Usage
 ### Installation
- * 
+ * Clone this repo
+ * `cd` into server file and in terminal, `npm install`
+ * `cd` into frontend file and in terminal, `npm install`
 ### Usage
- * 
+ * For client, `cd frontend` and `npm run start`
+ * For server, `cd server` and `npm run dev`
+
+
