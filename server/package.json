@@ -1,0 +1,37 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --setupFiles ./tests/integration/config.js --testPathPattern=/integration/ --watchAll --runInBand --verbose --forceExit",
+    "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose --runInBand --forceExit",
+    "coverage": "jest --setupFiles ./tests/integration/config.js --testPathPattern=/integration/ --coverage --runInBand --forceExit",
+    "unitCoverage": "jest --testPathPattern=/unit/ --coverage --runInBand --forceExit"
+  },
+  "jest": {
+    "preset": "@shelf/jest-mongodb"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@shelf/jest-mongodb": "^2.2.0",
+    "axios": "^0.24.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^12.0.4",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mongodb": "^4.3.0",
+    "mongoose": "^6.1.6",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "supertest": "^6.2.1"
+  }
+}
