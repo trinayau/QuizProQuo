@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+*{
+  background-color: #282c34;
+}
+
+.App label{
+  color: white;
+}
+.App input[type=text]{
+  background-color: white;
+  justify-self: center;
+}
+
+
+.App-link {
+  color: #61dafb;
+}

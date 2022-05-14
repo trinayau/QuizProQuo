@@ -125,3 +125,14 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+#general
+*/node_modules
+node_modules/
+*/coverage
+*/package-lock.json
+.DS_Store
+*/.DS_Store
+.vscode
+client/.DS_Store
+client/src/.DS_Store
