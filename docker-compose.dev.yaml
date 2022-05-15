@@ -2,7 +2,7 @@ services:
   api:
     container_name: quizPQApi
     ports: 
-      - 3000:3000
+      - 3001:3001
     environment: 
       - DB_NAME=QuizDB
       - MONGODB_URI=mongodb+srv://quizproquo:Gebru12@quizproquo.fmurj.mongodb.net/QuizDB?retryWrites=true&w=majority

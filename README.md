@@ -10,11 +10,18 @@
 This is a Lap 3 group project to make a quiz using React.
 ## Installation and Usage
 ### Installation
- * Clone this repo
- * `cd` into server file and in terminal, `npm install`
+ * Clone this repo and navigate to root directory
  * `cd` into frontend file and in terminal, `npm install`
 ### Usage
- * For client, `cd frontend` and `npm run start`
- * For server, `cd server` and `npm run dev`
+ * For client, `cd frontend` and `npm run start`, it should automatically load on `http://localhost:3000`
+ * For server, `cd server` and `npm run dev`  
+ To use docker:
+ To start server and use docker compose for server container,  open terminal and run `bash _scripts/startDev.sh`
+ * Starts API and DB services
+ * Serves API on `http://localhost:3001`  
+To teardown docker compose completely:  
+`bash _scripts/teardown.sh`
+
+
 
 

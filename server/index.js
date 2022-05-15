@@ -11,7 +11,7 @@
 
 const app = require('./server')
 const port = process.env.PORT || 3000;
-// const init = require("./db/mongoInit.js");
+const init = require("./db/mongoInit.js");
 
 app.listen(port, () => console.log(`Express now departing from port ${port}!`))
 
@@ -19,4 +19,4 @@ app.listen(port, () => console.log(`Express now departing from port ${port}!`))
 //     console.log(`Listening on port ${PORT} http://localhost:${PORT}`)
 // })
 
-// init();
+init();
