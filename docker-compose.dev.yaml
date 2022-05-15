@@ -1,0 +1,23 @@
+services:
+  api:
+    container_name: quizPQApi
+    ports: 
+      - 3000:3000
+    environment: 
+      - DB_NAME=QuizDB
+      - MONGODB_URI=mongodb+srv://quizproquo:Gebru12@quizproquo.fmurj.mongodb.net/QuizDB?retryWrites=true&w=majority
+      - NODE_ENV=development
+    depends_on:
+      - db
+    command: bash -c "npm install && npm run dev"
+
+  db:
+    container_name: QuizDB
+    volumes:
+      - "dbdata:/var/lib/mongodb/data"
+    environment: 
+      - MONGO_INITDB_ROOT_USERNAME=quizPQTeam
+      - MONGO_INITDB_DATABASE=quizDB
+      - MONGO_INITDB_ROOT_PASSWORD=Test12
+volumes:
+  dbdata:
