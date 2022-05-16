@@ -98,7 +98,6 @@ const HomePage = () => {
           value={room}
           onChange={handleRoomInput}
         />
-å
         <input
           type="submit"
           name="newQuiz"
