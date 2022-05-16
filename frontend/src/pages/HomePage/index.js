@@ -1,6 +1,9 @@
 import "./homepage.css";
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import io from 'socket.io-client';
+const socket = io.connect("http://localhost:5001");
+
 const HomePage = () => {
   // const [categoryList, setCategoryList] = useState({});
   // const navigate = useNavigate();
@@ -48,6 +51,12 @@ const HomePage = () => {
   //     console.warn(err);
   //   }
   // };
+
+  useEffect(() => {
+
+    socket.on('users', users => setPlayerCount(users))
+
+}, []);
   const [playerCount, setPlayerCount] = useState(0);
   const [error, setError] = useState("");
   const [usrInput, setUsrInput] = useState(undefined);
@@ -117,9 +126,9 @@ const HomePage = () => {
         {renderJoin()}
       </form>
       <p>
-        {playerCount <= 1
+        {playerCount <= 0
           ? "No Players Online"
-          : `Players ready: ${playerCount - 1}`}
+          : `Players ready: ${playerCount}`}
         {error && <div className="error">{error}</div>}
       </p>
     </div>
