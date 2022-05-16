@@ -2,8 +2,12 @@ import "./style.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const HomePage = () => {
+  const [difficulty, setDifficulty] = useState("");
+  const [numberOfQs, setNumberOfQs] = useState("1");
+  const [subject, setSubject] = useState();
   const [categoryList, setCategoryList] = useState({});
   const navigate = useNavigate();
+
   //gets all catergories from opentrivia
   const fetchCategories = async () => {
     const response = await fetch("https://opentdb.com/api_category.php");
@@ -49,10 +53,6 @@ const HomePage = () => {
     }
   };
 
-  const [difficulty, setDifficulty] = useState("");
-  const [numberOfQs, setNumberOfQs] = useState();
-  const [subject, setSubject] = useState();
-
   const handleChangeDifficulty = (e) => {
     setDifficulty(e.target.value);
   };
@@ -69,31 +69,8 @@ const HomePage = () => {
 
   return (
     <>
-      <form
-        aria-label="game-selection"
-        // onSubmit={handleSubmit}
-        onSubmit={createGame}
-      >
-        {/* <label htmlFor="players">How many players?</label>
-        <input name="players" type="text"></input>
-        <br />
-
-        <label htmlFor="categoryId">Select a topic</label>
-        <select className="categoryId" name="categoryId">
-          {fullCategory}
-        </select>
-
-        <br />
-        <label htmlFor="difficulty">Select a difficulty</label>
-        <select className="difficulty" name="difficulty">
-          <option value="easy">Easy</option>
-          <option value="medium">Medium</option>
-          <option value="hard">Hard</option>
-        </select>
-        <br />
-
-        <input type="submit" /> */}
-
+      <form aria-label="game-selection" onSubmit={createGame}>
+        <h1 id="game-heading"> GAME SETUP </h1>
         <label htmlFor="pick a category">
           Pick a category:
           <select
@@ -101,11 +78,9 @@ const HomePage = () => {
             aria-label="category"
             className="categoryId"
             name="categoryId"
+            id="category"
           >
-            <option value="9"> General Knowledge 📚 </option>
-            <option value="12">Music 🎹 </option>
-            <option value="31">Anime and Manga 🀄 </option>
-            <option value="20"> Mythology🔱 </option>
+            {fullCategory}
           </select>
         </label>
         <br />
@@ -130,13 +105,13 @@ const HomePage = () => {
             aria-label="number of questions"
             id="difficulty"
           >
-            <option value="easy">Easy 😃 </option>
-            <option value="medium">Medium 🤔 </option>
-            <option value="hard">Hard 😰 </option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard </option>
           </select>
         </label>
         <br />
-        <input type="submit" value="Play" id="play-button" />
+        <input type="submit" value="PLAY" id="play-button" />
       </form>
     </>
   );
