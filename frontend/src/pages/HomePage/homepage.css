@@ -25,10 +25,11 @@
     text-align: center;
 }
 
-/* #welcome img{
+ #welcome img{
     height: 420px;
     width: auto;
-} */
+    background-color: transparent;
+} 
 
 #welcome form {
     margin: 0 auto;
