@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import io from 'socket.io-client';
 import Logo from '../../images/logov1.png'
-
+import { useDispatch } from 'react-redux';
+import { setHost, setPlayer, setID } from '../../actions/userType';
 const socket = io.connect("http://localhost:5001");
 
 
 const HomePage = () => {
   // const [categoryList, setCategoryList] = useState({});
-  // const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
   // //gets all catergories from opentrivia
   // const fetchCategories = async () => {
   //   const response = await fetch("https://opentdb.com/api_category.php");
@@ -48,6 +50,32 @@ const HomePage = () => {
     setError("");
     setUsrInput(e.target.value);
   };
+
+  const handleCreate = (e) => {
+      e.preventDefault();
+      const player = usrInput;
+      if (player === undefined) {
+        setError("Don't be rude, introduce yourself!")
+    } else if (room === undefined) {
+        setError("You need to create room or give an existing name");
+    } else {
+   
+        socket.emit("check-room", room, (res) => {
+
+            console.log("socket response", res);
+
+            if (res.code === "success") {
+                setRoom(room);
+                dispatch(setHost(player, room));
+                navigate("/game");
+            } else {
+                setRoom(undefined);
+                console.warn(error);
+                setError(res.message);
+            }
+        });
+    }
+  }
   
 
   const handleRoomInput = (e) => {
@@ -85,7 +113,7 @@ const HomePage = () => {
           id="username"
           name="username"
           placeholder="PLAYER NAME"
-          // value={usrInput}
+          value={usrInput || ""}
           onChange={handleInput}
         />
 
@@ -95,14 +123,14 @@ const HomePage = () => {
           id="roomName"
           name="roomName"
           placeholder="ROOM NAME"
-          value={room}
+          value={room || ""}
           onChange={handleRoomInput}
         />
         <input
           type="submit"
           name="newQuiz"
           value="NEW GAME"
-          // onClick={handleCreate}
+          onClick={handleCreate}
         />
         {renderJoin()}
       </form>
