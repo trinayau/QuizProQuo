@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;1,600&family=Pacifico&display=swap");
+
+:root {
+    --heading-text: "Pacifico";
+    --content-text: "Nunito", sans-serif;
+    --content: white;
+}
+
+
+form {
+    font-family: var(--content-text);
+    text-align: center;
+    color: whitesmoke;
+    padding-left: 6rem;
+    font-size: 1.4rem;
+}
+
+#category,
+#difficulty,
+#number-of-questions {
+    color: #242223;
+    background-color: rgb(255, 250, 230);
+    border-radius: 4px;
+    padding: 0.2rem;
+    margin: 0rem 0.5rem;
+}
+
+label {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+}
+
+#play-button {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #242223;
+    padding: 0.5rem 1.2rem;
+    color:
+        #af135e;
+    display: inline-block;
+    border-radius: 50px;
+    width: 20%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color:
+        #ff8fc5;
+}
+
+#play-button:hover {
+    color: #af135e;
+    background-color: #ff8fc5;
+    box-shadow: 0 0 5px #ff8fc5,
+        0 0 10px rgb(255 143 197 / 0.8),
+        0 0 15px rgb(255 143 197 / 0.7),
+        0 0 30px rgb(255 143 197 / 0.6);
+    border-color: #ff8fc5;
+}
+
+
+@media screen and (max-width: 450px) {
+    form {
+        font-size: 0.9rem;
+        padding-left: 0.7rem;
+    }
+}
