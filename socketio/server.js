@@ -1,16 +1,36 @@
-const httpServer = require("http").createServer();
-require("events").EventEmitter.prototype._maxListeners = 100;
+const express = require('express');
+const app = express();
+const http = require("http");
+const {Server} = require('socket.io');
+const cors = require("cors")
+app.use(cors());
+const server = http.createServer()
 
-const io = require("socket.io")(httpServer, {
+const io = new Server(server, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
-});
+      origin: "*",
+      methods: ["GET", "POST"]
+  }
+})
 
 const playerIdList = [];
+const connectCounter = 0;
 
 io.on("connection", (socket) => {
+  socket.on('connect', function() { connectCounter++; });
+  console.log(`Connection to the socket: ${socket.id} has been made`);
+  const users = [];
+  for (let [id, socket] of io.of("/").sockets) {
+      users.push({
+          userID: id,
+          username: socket.username
+      });
+  };
+  const participantCount = io.engine.clientsCount;
+
+    console.log(participantCount)
+    // socket.emit("users", participantCount);
+    socket.emit("users", participantCount);
   socket.on("create", (roomId) => {
     socket.join(roomId);
 
@@ -83,4 +103,4 @@ io.on("connection", (socket) => {
   });
 });
 
-module.exports = httpServer;
+module.exports = server;
