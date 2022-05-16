@@ -17,8 +17,6 @@ const playerIdList = [];
 const connectCounter = 0;
 
 io.on("connection", (socket) => {
-  socket.on('connect', function() { connectCounter++; });
-  console.log(`Connection to the socket: ${socket.id} has been made`);
   const users = [];
   for (let [id, socket] of io.of("/").sockets) {
       users.push({

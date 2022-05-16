@@ -28,35 +28,14 @@ const HomePage = () => {
   //   );
   // });
 
-  // const createGame = async (e) => {
-  //   e.preventDefault();
-  //   const form = e.target;
-  //   try {
-  //     const options = {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //     };
-  //     const r = await fetch(
-  //       `http://localhost:3001/game/${form.categoryId.value}/${form.difficulty.value}/${form.range.value}`,
-  //       options
-  //     );
-  //     const gameId = await r.json();
 
-  //     navigate(`/room/${gameId}`, { replace: true });
-
-  //     if (gameId.err) {
-  //       throw Error(gameId.err);
-  //     }
-  //   } catch (err) {
-  //     console.warn(err);
-  //   }
-  // };
-
+  //On load, socket will listen for number of users being emitted from socket server
   useEffect(() => {
 
     socket.on('users', users => setPlayerCount(users))
 
 }, []);
+//no of users online, default is 0
   const [playerCount, setPlayerCount] = useState(0);
   const [error, setError] = useState("");
   const [usrInput, setUsrInput] = useState(undefined);
@@ -125,6 +104,8 @@ const HomePage = () => {
         />
         {renderJoin()}
       </form>
+      
+{/* Shows number of clients online */}
       <p>
         {playerCount <= 0
           ? "No Players Online"
