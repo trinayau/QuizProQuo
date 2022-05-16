@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;1,600&family=Pacifico&display=swap');
+
+:root{
+    --heading-text: 'Pacifico';
+    --content-text: 'Nunito', sans-serif;
+    --content: white;
+}
+
+.error {
+    position: absolute;
+    color: #91f7fe;
+}
+
+#welcome {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-style: var(--content-text);
+    background-image: url('../../images/home-desktop.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    text-align: center;
+}
+
+/* #welcome img{
+    height: 420px;
+    width: auto;
+} */
+
+#welcome form {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 30%;
+    text-align: center;
+    background: transparent;
+}
+
+
+#welcome label {
+    display: none;
+}
+
+#welcome input {
+    margin: 0 auto;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 50px;
+    padding: 10px 0;
+}
+
+#welcome input[type="text"] {
+    width: 100%;
+    margin-right: auto;
+    display: inline-block;
+    margin-left: auto;
+}
+
+#welcome input[name="newQuiz"] {
+    color: #005db6;
+    width: 49%;
+    display: inline-block;
+    border-radius: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color:
+        hsl(188, 88%, 90%);
+}
+
+#welcome input[name="joinQuiz"] {
+    color:
+        #af135e;
+    width: 49%;
+    display: inline-block;
+    border-radius: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color:
+        #ff8fc5;
+}
+
+#welcome input[name="joinQuiz"]:hover {
+    color: #af135e;
+    background-color: #ff8fc5;
+    box-shadow: 0 0 5px #ff8fc5,
+        0 0 10px rgb(255 143 197 / 0.8),
+        0 0 15px rgb(255 143 197 / 0.7),
+        0 0 30px rgb(255 143 197 / 0.6);
+    border-color: #ff8fc5;
+}
+
+#welcome input[name="newQuiz"]:hover {
+    color: #005db6;
+    background-color: #91f7fe;
+    box-shadow: 0 0 5px #91f7fe,
+        0 0 10px rgb(145 247 254 / 0.8),
+        0 0 15px rgb(145 247 254 / 0.7),
+        0 0 30px rgb(145 247 254/ 0.6);
+    border-color: #91f7fe;
+}
+
+#welcome p {
+    width: 100%;
+    text-align: center;
+    /* font-family: var(--heading-text);  */
+    color: var(--content); 
+    font-size: 1.4rem;
+    background: transparent;
+}
+
+#welcome .disabled {
+    pointer-events: none;
+    color: grey;
+}
+
+/* RESPONSIVE - MOBILE */
+
+@media screen and (max-width: 450px) {
+    #welcome {
+        background-image: url('../../images/home-mobile.jpg');
+        background-size: 100vw 100vh;
+    }
+
+    #welcome img {
+        height: auto;
+        width: 380px;
+        padding-top: 0.5rem;
+    }
+
+    #welcome input[name="joinQuiz"],
+    #welcome input[name="newQuiz"],
+    #welcome input[type="text"] {
+        font-size: 0.8rem;
+    }
+
+    #welcome form {
+        width: 60%;
+        margin-right: 20%;
+    }
+
+    #welcome p {
+        font-size: 0.9rem;
+    }
+}
