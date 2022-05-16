@@ -14,7 +14,6 @@ const io = new Server(server, {
 })
 
 const playerIdList = [];
-const connectCounter = 0;
 
 io.on("connection", (socket) => {
   const users = [];

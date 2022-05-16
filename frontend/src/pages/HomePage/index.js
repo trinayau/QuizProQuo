@@ -2,7 +2,10 @@ import "./homepage.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import io from 'socket.io-client';
+import Logo from '../../images/logov1.png'
+
 const socket = io.connect("http://localhost:5001");
+
 
 const HomePage = () => {
   // const [categoryList, setCategoryList] = useState({});
@@ -74,7 +77,7 @@ const HomePage = () => {
 
   return (
     <div id="welcome">
-      {/* <img src={logo} alt="logo: Let's Get Quizzical" /> */}
+       <img src={Logo} alt="logo: Let's Get Quizzical" />
       <form role="form" autoComplete="off">
         <label htmlFor="username">Username</label>
         <input
