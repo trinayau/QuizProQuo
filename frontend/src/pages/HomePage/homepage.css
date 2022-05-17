@@ -44,7 +44,7 @@
 
 
 #welcome label {
-    display: none;
+    display: inline;
 }
 
 #welcome input {
@@ -115,6 +115,15 @@
     font-size: 1.4rem;
     background: transparent;
     
+}
+
+#welcome div, #welcome h3 {
+    text-align: center;
+    width: 100%;
+}
+
+#welcome p {
+    margin: 0;
 }
 
 #welcome .disabled {

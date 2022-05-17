@@ -15,18 +15,26 @@ const io = new Server(server, {
   }
 })
 
+//Makes new instance of Games
 const games = new Games();
 
+//Initialises connected users array
+let users = [];
 
+//Connected socket
 io.on("connection", (socket) => {
-  // const users = [];
-  // for (let [id, socket] of io.of("/").sockets) {
-  //     users.push({
-  //         userID: id,
-  //         username: socket.username
-  //     });
-  // };
 
+//Declares user object
+socket.on("join server", (username) => {
+  const user = {
+    username,
+    id: socket.id
+  }
+  //Pushes connected user to users array and emits the users array
+  users.push(user);
+  console.log(users)
+  io.emit("new user", users);
+});
 
 
 //Emits number of people online
@@ -47,12 +55,16 @@ io.on("connection", (socket) => {
                   })
       }
   });
+
+
 //On disconnect, count new number of clients and update participantCount
   socket.on('disconnect', () => {
-  
+    users = users.filter(u => u.id !== socket.id);
+    io.emit("new user", users);
     //makes io count the number of clients again
     participantCount = io.engine.clientsCount;
     io.emit("users", participantCount);
+    console.log(participantCount)
 })
 
 });
