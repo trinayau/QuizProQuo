@@ -70,6 +70,28 @@ socket.on("join server", (username) => {
     }); 
 })
 
+let gamePlayers; 
+let roomNameVar; 
+socket.on('game-players', (roomName, cb) => {
+    const data = games.getPlayerData(roomName)
+    console.log("Player data")
+    console.log(data)
+    gamePlayers = data
+    roomNameVar = roomName
+    // io.to(roomName).emit('data', data);
+
+    // socket.on('chat-message', (message) => {
+    //     const messageData = chatMessage(message, socket);
+    //     console.log(messageData);
+    io.in(roomName).emit(data);
+    // })
+
+    cb(
+        data
+    )
+
+})
+
 //On disconnect, count new number of clients and update participantCount
   socket.on('disconnect', () => {
     users = users.filter(u => u.id !== socket.id);

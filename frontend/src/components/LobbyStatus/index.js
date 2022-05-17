@@ -11,10 +11,7 @@ const LobbyStatus = ({host}) => {
 
     const [ready, setReady] = useState(false)
     const [subject, setSubject] = useState("") 
-    useSelector((state) => state.config.config.subject)
     const [difficulty, setDifficulty] = useState("")
-    useSelector((state) => state.config.config.difficulty)
-    console.log(difficulty)
     const [numberOfQs, setNo] = useState("")
     useSelector((state) => state.config.config.numberOfQs ) 
     const room = useSelector((state) => state.user.room)
@@ -43,7 +40,7 @@ const LobbyStatus = ({host}) => {
     }, [ready]);
 
 
-console.log(ready)
+// console.log(ready)
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -94,7 +91,6 @@ console.log(ready)
         return (
             <button id="start-game" onClick={handleClick}>Start Game</button> 
             // onclick fetch questions and go to quiz page
-            
         )
 
     }
@@ -113,11 +109,6 @@ console.log(ready)
         </>
         )
     }
-
-
-
-
-
 }
 
 export default LobbyStatus

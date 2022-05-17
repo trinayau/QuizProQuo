@@ -5,7 +5,6 @@ export const roomConfig = (numberOfQs,subject,difficulty) => {
         difficulty: difficulty,
         subject: subject,
     }
-console.log(roomConfig)
 
     return{
         type: "ROOM_CONFIG",
