@@ -7,7 +7,8 @@ const init = async () => {
     useUnifiedTopology: true,
   });
 
-  let dbName = process.env.NODE_ENV == "test" ? "quiz_dbtest" : "quiz_db";
+  //let dbName = process.env.NODE_ENV == "test" ? "quiz_dbtest" : "quiz_db";
+  let dbName = "QuizDB";
   try {
     let client = await mongoClient.connect();
     console.log('db connected')
