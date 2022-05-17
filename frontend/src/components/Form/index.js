@@ -67,6 +67,11 @@ const HomePage = () => {
     subject(setSubject);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    navigate('/waitingroom')
+  }
+
   return (
     <>
       <form aria-label="game-selection" onSubmit={createGame}>
@@ -111,7 +116,7 @@ const HomePage = () => {
           </select>
         </label>
         <br />
-        <input type="submit" value="PLAY" id="play-button" />
+        <input onClick={handleSubmit} type="submit" value="PLAY" id="play-button" />
       </form>
     </>
   );

@@ -34,7 +34,7 @@ const HomePage = () => {
     if (player === undefined) {
       setError("Don't be rude, introduce yourself!");
     } else if (room === undefined) {
-      setError("You need to create room or give an existing name");
+      setError("You need to create a room or give an existing name");
     } else {
       socket.emit("check-room", room, (res) => {
         console.log("socket response", res);
