@@ -20,7 +20,10 @@ This is a Lap 3 group project to make a quiz using React.
  * Starts API and DB services
  * Serves API on `http://localhost:3001`  
 To teardown docker compose completely:  
-`bash _scripts/teardown.sh`
+`bash _scripts/teardown.sh`  
+To set up socket server:  
+* `cd socketio`  
+* `npm run dev`
 
 
 
