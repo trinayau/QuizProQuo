@@ -56,12 +56,6 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    //Checking for errors
-    console.log(`this is the subject: ${subject}`)
-    console.log(`this is the difficulty ${difficulty}`)
-    console.log(`this is no of questions:  ${numberOfQs}`)
-    console.log(`this is the room name: ${roomName}`)
-
     dispatch(fetchQuiz(numberOfQs, subject, difficulty));
 
     const config =  {
