@@ -6,7 +6,7 @@ const ScoreResults = ({ text, player, winner }) => {
 
   const calc = Math.round((text / results.length) * 100);
 
-  results(
+  return(
     <>
       <div className="wrapper">
         {winner ? (

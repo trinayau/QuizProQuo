@@ -13,12 +13,10 @@ const Quiz = () => {
   const answer = result[currentQuestion].answers;
 
   return (
-    <>
       <div role="quiz-page" id="quiz-page">
         <Questions question={question} index={index} />
         <Answers answer={answer} index={index} />
       </div>
-    </>
   );
 };
 
