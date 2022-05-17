@@ -1,0 +1,41 @@
+:root {
+    /* --heading-text: "Pacifico";
+    --content-text: "Nunito", sans-serif; */
+    --content: white;
+}
+
+h3 {
+    /* font-family: var(--content-text); */
+    color: var(--content);
+    text-align: center;
+    margin: 0 auto;
+}
+
+#quizCard {
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+}
+
+#quiz-heading {
+    width: 70%;
+    margin-bottom: 10%;
+    border-radius: 10px;
+    font-size: 3rem;
+    color: white;
+    background-color: #ea62cc;
+    box-shadow: 0 0 100px #F250CF,
+        0 0 100px #F250CFcc,
+        0 0 150px #ff8fc5b3,
+        0 0 300px #ff8fc599;
+    border-color: #ff8fc5;
+}
+
+@media screen and (max-width: 450px) {
+    #question-container {
+        text-align: center;
+        width: 220px;
+        margin: 0 auto;
+        font-size: 0.9rem;
+    }
+}

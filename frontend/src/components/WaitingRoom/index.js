@@ -40,14 +40,14 @@ const WaitingRoom = ({ host }) => {
       <div id="waiting-room">
         <span id="waiting-room-heading"> WAITING ROOM </span>
         {ready ? (
-          <button id="play-now" onClick={joinGame}>
+          <button role="buttong" id="play-now" onClick={joinGame}>
             FIGHT!
           </button>
         ) : (
           <p>Waiting for host to start the game...</p>
         )}
 
-        <p id="waiting-update">
+        <p role="waiting-update" id="waiting-update">
           You will be answering {NoOfQs} questions about {subject} at difficulty
           level {difficulty}
         </p>
