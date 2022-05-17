@@ -2,13 +2,22 @@ import "./style.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {socket} from '../../socket/index.js';
+import { useSelector, useDispatch } from 'react-redux'
+import {roomConfig} from "../../actions/roomConfig"
+import { fetchQuiz } from "../../actions";
 
-const HomePage = () => {
+const Form = () => {
   const [difficulty, setDifficulty] = useState("easy");
-  const [numberOfQs, setNumberOfQs] = useState("1");
-  const [subject, setSubject] = useState();
+  const [numberOfQs, setNumberOfQs] = useState("5");
+  const [subject, setSubject] = useState(9);
   const [categoryList, setCategoryList] = useState({});
+
+  const roomName = useSelector(state => state.user.room);
+  const id = useSelector(state => state.user.id);
+  const username = useSelector(state => state.user.user.username);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   //gets all catergories from opentrivia
   const fetchCategories = async () => {
@@ -18,11 +27,12 @@ const HomePage = () => {
       setCategoryList((prevState) => ({ ...prevState, [data.id]: data.name }));
     });
   };
-
+ //fetches categories once when page loads
   useEffect(() => {
     fetchCategories();
   }, []);
 
+  //drop down with all categories
   const fullCategory = Object.keys(categoryList).map((category) => {
     return (
       <option key={category} value={category}>
@@ -30,30 +40,6 @@ const HomePage = () => {
       </option>
     );
   });
-
-  const createGame = async (e) => {
-    e.preventDefault();
-    const form = e.target;
-    try {
-      const options = {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-      };
-      const r = await fetch(
-        `http://localhost:3001/game/${form.categoryId.value}/${form.difficulty.value}/${form.range.value}`,
-        options
-      );
-      const gameId = await r.json();
-
-      navigate(`/room/${gameId}`, { replace: true });
-
-      if (gameId.err) {
-        throw Error(gameId.err);
-      }
-    } catch (err) {
-      console.warn(err);
-    }
-  };
 
   const handleChangeDifficulty = (e) => {
     setDifficulty(e.target.value);
@@ -64,14 +50,42 @@ const HomePage = () => {
   };
 
   const handleChangeSubject = (e) => {
-    setSubject(e.target.value);
-    console.log("check:", setSubject);
-    subject(setSubject);
+    setSubject(e.target.value)
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    //Checking for errors
+    console.log(`this is the subject: ${subject}`)
+    console.log(`this is the difficulty ${difficulty}`)
+    console.log(`this is no of questions:  ${numberOfQs}`)
+    console.log(`this is the room name: ${roomName}`)
+
+    dispatch(fetchQuiz(numberOfQs, subject, difficulty));
+
+    const config =  {
+      host: id,
+      room: roomName, 
+      difficulty: difficulty, 
+      count: numberOfQs,
+      subject: subject,
+      username: username
+    }
+    //sends to redux store
+    dispatch(roomConfig(numberOfQs,subject,difficulty));
+    
+    //sends to socket server which creates a room
+    socket.emit("add-config", config, (res) => {
+      console.log(res)
+    });
+
+    navigate("/waitingroom");
   };
 
   return (
     <>
-      <form aria-label="game-selection" onSubmit={createGame}>
+      <form aria-label="game-selection" onSubmit={handleSubmit}>
         <h1 id="game-heading"> GAME SETUP </h1>
         <label htmlFor="pick a category">
           Pick a category:
@@ -119,4 +133,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Form;
