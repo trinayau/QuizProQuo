@@ -16,20 +16,25 @@ const io = new Server(server, {
 })
 
 const games = new Games();
+
+
 io.on("connection", (socket) => {
-  const users = [];
-  for (let [id, socket] of io.of("/").sockets) {
-      users.push({
-          userID: id,
-          username: socket.username
-      });
-  };
-  const participantCount = io.engine.clientsCount;
+  // const users = [];
+  // for (let [id, socket] of io.of("/").sockets) {
+  //     users.push({
+  //         userID: id,
+  //         username: socket.username
+  //     });
+  // };
 
-    console.log(participantCount)
-    // socket.emit("users", participantCount);
-    socket.emit("users", participantCount);
 
+
+//Emits number of people online
+  let participantCount = io.engine.clientsCount;
+  console.log(participantCount)
+  io.emit("users", participantCount);
+
+  //Checks if there is room in games array
     socket.on("check-room", (roomName, callback) => {
       console.log("CLIENT REQUEST TO CREATE ROOM WITH " ,  roomName)
       if (games.checkRoomName(roomName)) {
@@ -42,6 +47,13 @@ io.on("connection", (socket) => {
                   })
       }
   });
+//On disconnect, count new number of clients and update participantCount
+  socket.on('disconnect', () => {
+  
+    //makes io count the number of clients again
+    participantCount = io.engine.clientsCount;
+    io.emit("users", participantCount);
+})
 
 });
 

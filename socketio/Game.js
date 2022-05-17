@@ -22,7 +22,7 @@ class Games {
         
                 // let game = new Game(hostID, roomName, difficulty, count, subject);
                 this.games.push(game);
-                console.log("game added, room list:")
+                console.log(`game added, room list:${this.games}`)
                 this.games.forEach(room => console.log(room))
                 return game;
     }
@@ -113,7 +113,6 @@ class Games {
         console.log(roomName)
         // if(this.games){
         this.games.forEach(game => console.log(game))
-
         const game =  this.games.filter(game => {console.log(game.room === roomName); return game.room === roomName});
        
         return game;
