@@ -1,28 +1,70 @@
 #waiting-room {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-image: url('../../images/home-desktop.jpg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
 }
+
+#start-game,
+#play-now {
+    font-size: 1.5rem;
+    width: 10%;
+    height: 50px;
+    background: transparent;
+    color: #005db6;
+    width: 30%;
+    display: inline-block;
+    border-radius: 50px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color:
+        hsl(188, 88%, 90%);
+}
+
+#start-game:hover,
+#play-now:hover {
+    color: #005db6;
+    background-color: #91f7fe;
+    box-shadow: 0 0 5px #91f7fe,
+        0 0 10px rgb(145 247 254 / 0.8),
+        0 0 15px rgb(145 247 254 / 0.7),
+        0 0 30px rgb(145 247 254/ 0.6);
+    border-color: #91f7fe;
+}
+
+#waiting-room p {
+    font-size: 1.3rem;
+    background: transparent;
+
+}
+
+#waiting-update {
+    color: white;
+}
+
 #waiting-room-heading {
+    width: 35%;
+    margin-bottom: 5%;
+    border-radius: 5px;
     font-size: 3rem;
-    padding: 10px;
-    border-radius: 10px;
+    color: white;
     background-color: #ea62cc;
     box-shadow: 0 0 100px #F250CF,
-        0 0 10px #F250CFcc,
-        0 0 15px #ff8fc5b3,
-        0 0 30px #ff8fc599;
+        0 0 100px #F250CFcc,
+        0 0 150px #ff8fc5b3,
+        0 0 300px #ff8fc599;
     border-color: #ff8fc5;
 }
 
-
 @media screen and (max-width: 450px) {
-    #home-page {
-        background-image: url('../../images/home-mobile.jpg');
+    p {
+        text-align: center;
+        width: 80%;
+        font-size: 0.8rem;
     }
 }
