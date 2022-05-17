@@ -1,59 +1,46 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import "./style.css";
+import React, {useState, useEffect} from 'react'
+import {LobbyStatus, PlayerBubble} from '../../components'
+import {useSelector} from "react-redux"
+import "./style.css"
+import { socket } from '../../socket'
 
-const WaitingRoom = ({ host }) => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
-  const [ready, setReady] = useState("false");
-  const [subject, setSubject] = useState("");
-  const [difficulty, setDifficulty] = useState("");
-  const [NoOfQs, setNoOfQs] = useState("");
+const Lobby = () => {
+    // const players = ['player1', 'player2', 'player3']// this will come from redux 
+    const [players, setPlayers] = useState("");
+    const room = useSelector((state) => state.user.room)
+    const host = useSelector((state) => state.user.user.type);
 
-  // const room = useSelector((state) => state.user.room)
-  // need a useEffect that calls on sockets
+    useEffect(() => {  
+        socket.emit('game-players', room, (res) => {
+            // console.log(res[0].username)
+            // setPlayers(res[0].username)
+            const usernames = res.map(el => el.username)
+            console.log(usernames)
+            setPlayers(usernames)
+            
+        })
+        socket.on('data', data => console.log(data))
+    }, [players]);
 
-  const player = host;
 
-  const startGame = (e) => {
-    e.preventdefault();
-  };
+    return(
+        <div id="Lobby">
+            <h2>Lobby</h2>
+    
+            <LobbyStatus host={host}/> 
 
-  const joinGame = (e) => {
-    e.preventdefault();
-  };
+            <div id="players">
+           
+            {players &&
+            players.map((player) => <PlayerBubble key={players.indexOf(player)} player={player} />)} 
+            
+            </div>
+           
+        </div>
+    )
+}
 
-  if (player === "HOST") {
-    return (
-      <div id="waiting-room">
-        <span id="waiting-room-heading"> WAITING ROOM </span>
-        <button id="start-game" onClick={startGame}>
-          Start Game
-        </button>
-        ;
-      </div>
-    );
-  } else {
-    return (
-      <div id="waiting-room">
-        <span id="waiting-room-heading"> WAITING ROOM </span>
-        {ready ? (
-          <button id="play-now" onClick={joinGame}>
-            FIGHT!
-          </button>
-        ) : (
-          <p>Waiting for host to start the game...</p>
-        )}
 
-        <p id="waiting-update">
-          You will be answering {NoOfQs} questions about {subject} at difficulty
-          level {difficulty}
-        </p>
-      </div>
-    );
-  }
-};
 
-export default WaitingRoom;
+export default Lobby

@@ -29,6 +29,9 @@ const HomePage = () => {
   }, []);
 
   useEffect(()=> {
+
+    socket.on('assign-id', id => dispatch(setID(id)))
+    //Emits to server the set username when username changes
     socket.emit('join server', username);
   },[username])
 
