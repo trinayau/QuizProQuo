@@ -1,10 +1,18 @@
 const express = require('express');
-const router = express.Router();
 const gameController = require('../controllers/game.js')
+const scoreController = require('../controllers/scoreboard.js')
 
-router.route('/')
-    .get (gameController.home)
+const gameRouter = express.Router();
+const scoreRouter = express.Router();
 
-router.post('/game/:categoryId/:difficulty/:range', gameController.setGame)
 
-module.exports = router;
+gameRouter.route('/').get(gameController.home)
+gameRouter.post('/game/:categoryId/:difficulty/:range', gameController.setGame)
+
+//Possible routes for the leaderboard or scores display
+scoreRouter.get('/', scoreController.index)
+scoreRouter.get('/:id', scoreController.show)
+scoreRouter.post('/', scoreController.create);
+
+
+module.exports = { gameRouter, scoreRouter }
