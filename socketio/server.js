@@ -69,6 +69,10 @@ socket.on("join server", (username) => {
         message: `SUCCESS: configuration has been added`
     }); 
 })
+socket.on('game-start', (roomName) => {
+  console.log("game started")
+    io.to(roomName).emit('game-start', true)
+});
 
 //On disconnect, count new number of clients and update participantCount
   socket.on('disconnect', () => {
