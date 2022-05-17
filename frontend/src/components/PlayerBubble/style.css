@@ -1,22 +1,60 @@
 .bubble{
-    background-color: rgb(200,71,84);
     border-radius: 50%;
     width: 100px;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: bubble-bounce 2s ease infinite;
+    /* animation: bubble-bounce 2s ease infinite; */
     position: relative;
+    background-color: #3D238A;  
+    transition: background-color 3s ease-in-out;
+    background: linear-gradient(215deg, #348dff, #ff00d8);
+    background-size: 350% 350%;
+    -webkit-animation: gradient 3s ease infinite;
+    -moz-animation: gradient 3s ease infinite;
+    animation: gradient 3s ease infinite;
+    font-size: 15px;
 }
 
+.bubble:hover {
+background-color: #3D238A;
+background: linear-gradient(215deg, #348dff, #ff00d8);
+}
+
+
+@-webkit-keyframes gradient {
+  0%{background-position:0% 61%; top:0px}
+  50%{background-position:100% 40%; top: 10px;}
+  100%{background-position:0% 61%; top: 0px}
+}
+@-moz-keyframes gradient {
+  0%{background-position:0% 61%; top: 0px}
+  50%{background-position:100% 40%; top: 10px;}
+  100%{background-position:0% 61%; top: 0px}
+}
+@keyframes gradient {
+  0%{background-position:0% 61%; top: 0px}
+  50%{background-position:100% 40%; top: 10px;}
+  100%{background-position:0% 61%; top:0px}
+}
 @keyframes bubble-bounce {
   0%, 100% {
     top: 0;
+    background: linear-gradient(40deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+  }
+
+  20% {
+    background: linear-gradient(42deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
   }
 
   50% {
     top: 10px;
+    background: linear-gradient(44deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
+  }
+
+  75% {
+    background: linear-gradient(45deg, #ffd800, #ff5520, #750cf2, #0cbcf2);
   }
 }
 
