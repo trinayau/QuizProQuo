@@ -18,6 +18,9 @@ const Lobby = () => {
         })
     }, []);
 
+    socket.on("peasant joining", data => {
+        
+    })
 
     return(
         <div id="Lobby">
