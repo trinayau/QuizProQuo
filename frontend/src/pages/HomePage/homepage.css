@@ -7,7 +7,6 @@
 }
 
 .error {
-    position: absolute;
     color: #91f7fe;
 }
 
@@ -75,7 +74,7 @@
         hsl(188, 88%, 90%);
 }
 
-#welcome input[name="joinQuiz"] {
+#welcome .join {
     color:
         #af135e;
     width: 49%;
@@ -87,7 +86,7 @@
         #ff8fc5;
 }
 
-#welcome input[name="joinQuiz"]:hover {
+#welcome .join:hover {
     color: #af135e;
     background-color: #ff8fc5;
     box-shadow: 0 0 5px #ff8fc5,
@@ -128,7 +127,13 @@
 
 #welcome .disabled {
     pointer-events: none;
+    color: #fff;
     background-color: grey;
+    width: 49%;
+    display: inline-block;
+    border-radius: 50px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 /* RESPONSIVE - MOBILE */
