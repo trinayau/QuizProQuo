@@ -1,8 +1,10 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import {socket} from '../../socket/index.js';
+
 const HomePage = () => {
-  const [difficulty, setDifficulty] = useState("");
+  const [difficulty, setDifficulty] = useState("easy");
   const [numberOfQs, setNumberOfQs] = useState("1");
   const [subject, setSubject] = useState();
   const [categoryList, setCategoryList] = useState({});
