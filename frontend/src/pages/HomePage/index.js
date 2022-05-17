@@ -1,4 +1,4 @@
-import "./homepage.css";
+import "./style.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";

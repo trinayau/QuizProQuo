@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { HomePage, SetGame, Lobby } from "./pages";
+import { HomePage, SetGame, Lobby, Quiz } from "./pages";
 
 function App() {
   return (
@@ -10,11 +10,10 @@ function App() {
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/game" element={<SetGame />} />
         <Route path="/waitingroom" element={<Lobby />} />
+        <Route path="/quiz" element={<Quiz />} />
       </Routes>
-
     </div>
   );
-
 }
 
 export default App;

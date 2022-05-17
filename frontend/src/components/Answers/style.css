@@ -1,0 +1,31 @@
+#cards {
+    color: white;
+    display: block;
+    text-align: center;
+    padding: 1.2rem;
+    background-color: lightcyan;
+    color: #2d6cdf;
+    border-radius: 4px;
+    border: none;
+    display: flex;
+    justify-content: space-evenly;
+    width: 30%;
+    margin-top: 1rem;
+    font-family: var(--content-text);
+}
+
+#cards:hover {
+    cursor: pointer;
+    background-color: #2d6cdf;
+    color: lightcyan;
+    transition-duration: 0.4s;
+}
+
+@media screen and (max-width: 450px) {
+    #answer-cards {
+
+        padding: 0.9rem;
+        font-size: 0.8rem;
+        font-family: var(--content-text);
+    }
+}
