@@ -1,8 +1,7 @@
 const express = require('express')
 const app = express();
 const path = require('path')
-const gameRoute = require('./routes/index.js');
-const scoreRoutes = require('./routes/index.js');
+const { gameRouter, scoreRouter } = require('./routes/index.js');
 const cors = require('cors');
 app.use(cors())
 app.use(express.json());
@@ -24,6 +23,6 @@ app.get('/', (req, res) => res.send("Hello, world! Welcome to QuizProQuo\'s API!
 
 
 //Leaderboard routes
-app.get('/scoreboard', scoreRoutes)
+app.use('/scoreboard', scoreRouter)
 
 module.exports = app;
