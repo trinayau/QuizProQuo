@@ -11,6 +11,7 @@ function App() {
         <Route exact path="/game" element={<SetGame />} />
         <Route path="/waitingroom" element={<Lobby />} />
       </Routes>
+
     </div>
   );
 

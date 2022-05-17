@@ -127,7 +127,7 @@ const Form = () => {
           </select>
         </label>
         <br />
-        <input type="submit" value="PLAY" id="play-button" />
+        <input onClick={handleSubmit} type="submit" value="PLAY" id="play-button" />
       </form>
     </>
   );
