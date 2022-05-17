@@ -61,31 +61,81 @@ console.log(ready)
        let subjectWord;
 
        switch(subject){
-           case "9":
+            case "9":
                subjectWord = 'General Knowledge';
                break;
-        case "10":
+            case "10":
                subjectWord = 'Books';
                break;
-        case "11":
+            case "11":
                 subjectWord = 'Film'
-           case "12":
-               subjectWord = 'Music';
+            case "12":
+                subjectWord = 'Music';
                break;
-           case "21":
-               subjectWord = 'Sport';
+           case "13":
+               subjectWord = 'Musicals & Theatre';
                break;
-           case "22":
-               subjectWord = 'Geography';
+           case "14":
+               subjectWord = 'Television';
                break;
-           case "31":
-               subjectWord = 'Anime and Manga';
+           case "15":
+               subjectWord = 'Video Games';
                break;
-           case "26":
-               subjectWord = 'Celebrities';
+           case "16":
+               subjectWord = 'Board Games';
                break;
+            case "17":
+               subjectWord = 'Science & Nature';
+               break;
+            case "18":
+               subjectWord = 'Computers';
+               break;
+            case "19":
+               subjectWord = 'Mathematics';
+               break;
+            case "20":
+                subjectWord = 'Mythology';
+                break;
+            case "21":
+                subjectWord = 'Sports';
+                break;
+            case "22":
+                subjectWord = 'Geography';
+                break;
+            case "23":
+                subjectWord = 'History';
+                break;
+            case "24":
+                subjectWord = 'Politics';
+                break;
+            case "25":
+                subjectWord = 'Art';
+                break;
+            case "26":
+                subjectWord = 'Celebrities';
+                break;
+            case "27":
+                subjectWord = 'Animals';
+                break;
+            case "28":
+                subjectWord = 'Vehicles';
+                break;
+            case "29":
+                subjectWord = 'Comics';
+                break;
+            case "30":
+                subjectWord = 'Science: Gadgets';
+                break;
+            case "31":
+                subjectWord = 'Anime & Manga';
+                break;
+            case "32":
+                subjectWord = 'Cartoon & Animations';
+                break;
            default:
-               subjectWord = 'Suprise Me'
+               subjectWord = 'Surprise Me'
+               break;
+               
        }
 
 
