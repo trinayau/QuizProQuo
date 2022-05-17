@@ -4,7 +4,7 @@ const http = require("http");
 const {Server} = require('socket.io');
 const cors = require("cors")
 app.use(cors());
-const server = http.createServer();
+const server = http.createServer(app);
 
 const {Games} = require('./Game') 
 
@@ -68,6 +68,28 @@ socket.on("join server", (username) => {
         code: "success",
         message: `SUCCESS: configuration has been added`
     }); 
+})
+
+let gamePlayers; 
+let roomNameVar; 
+socket.on('game-players', (roomName, cb) => {
+    const data = games.getPlayerData(roomName)
+    console.log("Player data")
+    console.log(data)
+    gamePlayers = data
+    roomNameVar = roomName
+    // io.to(roomName).emit('data', data);
+
+    // socket.on('chat-message', (message) => {
+    //     const messageData = chatMessage(message, socket);
+    //     console.log(messageData);
+    io.in(roomName).emit(data);
+    // })
+
+    cb(
+        data
+    )
+
 })
 
 //On disconnect, count new number of clients and update participantCount

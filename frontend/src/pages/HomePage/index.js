@@ -1,4 +1,4 @@
-import "./homepage.css";
+import "./style.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
@@ -135,7 +135,8 @@ const HomePage = () => {
 
   return (
     <div id="welcome">
-      <img src={Logo} alt="Quiz Pro Quo logo" />
+      {/* <img src={Logo} alt="Quiz Pro Quo logo" /> */}
+      <h1>Quiz Pro Quo</h1>
       <form>
       <label htmlFor="username">Username</label>
         <input
