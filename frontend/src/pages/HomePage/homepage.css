@@ -29,6 +29,7 @@
     height: 420px;
     width: auto;
     background-color: transparent;
+    
 } 
 
 #welcome form {
@@ -53,6 +54,7 @@
     text-align: center;
     border-radius: 50px;
     padding: 10px 0;
+    
 }
 
 #welcome input[type="text"] {
@@ -112,11 +114,12 @@
     color: var(--content); 
     font-size: 1.4rem;
     background: transparent;
+    
 }
 
 #welcome .disabled {
     pointer-events: none;
-    color: grey;
+    background-color: grey;
 }
 
 /* RESPONSIVE - MOBILE */
@@ -137,6 +140,7 @@
     #welcome input[name="newQuiz"],
     #welcome input[type="text"] {
         font-size: 0.8rem;
+        
     }
 
     #welcome form {
