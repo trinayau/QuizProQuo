@@ -1,50 +1,27 @@
 import "./homepage.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import io from 'socket.io-client';
-import Logo from '../../images/logov1.png'
-import { useDispatch } from 'react-redux';
-import { setHost, setPlayer, setID } from '../../actions/userType';
-const socket = io.connect("http://localhost:5001");
-
+import io from "socket.io-client";
+import Logo from "../../images/logov1.png";
+import { useDispatch } from "react-redux";
+import { setHost, setPlayer, setID } from "../../actions/userType";
+const socket = io.connect("http://localhost:3000");
 
 const HomePage = () => {
   // const [categoryList, setCategoryList] = useState({});
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  // //gets all catergories from opentrivia
-  // const fetchCategories = async () => {
-  //   const response = await fetch("https://opentdb.com/api_category.php");
-  //   const data = await response.json();
-  //   data.trivia_categories.forEach((data) => {
-  //     setCategoryList((prevState) => ({ ...prevState, [data.id]: data.name }));
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   fetchCategories();
-  // }, []);
-
-  // const fullCategory = Object.keys(categoryList).map((category) => {
-  //   return (
-  //     <option key={category} value={category}>
-  //       {categoryList[category]}
-  //     </option>
-  //   );
-  // });
-
-
-  //On load, socket will listen for number of users being emitted from socket server
-  useEffect(() => {
-
-    socket.on('users', users => setPlayerCount(users))
-
-}, []);
-//no of users online, default is 0
+  //no of users online, default is 0
   const [playerCount, setPlayerCount] = useState(0);
   const [error, setError] = useState("");
   const [usrInput, setUsrInput] = useState(undefined);
   const [room, setRoom] = useState(undefined);
+
+  //On load, socket will listen for number of users being emitted from socket server
+  useEffect(() => {
+    socket.on("users", (users) => setPlayerCount(users));
+  }, []);
 
   const handleInput = (e) => {
     setError("");
@@ -52,32 +29,29 @@ const HomePage = () => {
   };
 
   const handleCreate = (e) => {
-      e.preventDefault();
-      const player = usrInput;
-      if (player === undefined) {
-        setError("Don't be rude, introduce yourself!")
+    e.preventDefault();
+    const player = usrInput;
+    if (player === undefined) {
+      setError("Don't be rude, introduce yourself!");
     } else if (room === undefined) {
-        setError("You need to create room or give an existing name");
+      setError("You need to create room or give an existing name");
     } else {
-   
-        socket.emit("check-room", room, (res) => {
+      socket.emit("check-room", room, (res) => {
+        console.log("socket response", res);
 
-            console.log("socket response", res);
-
-            if (res.code === "success") {
-                setRoom(room);
-                dispatch(setHost(player, room));
-                navigate("/game");
-            } else {
-                setRoom(undefined);
-                console.warn(error);
-                setError(res.message);
-            }
-        });
+        if (res.code === "success") {
+          setRoom(room);
+          dispatch(setHost(player, room));
+          navigate("/game");
+        } else {
+          setRoom(undefined);
+          console.warn(error);
+          setError(res.message);
+        }
+      });
     }
-  }
+  };
   
-
   const handleRoomInput = (e) => {
     setError("");
     setRoom(e.target.value);
@@ -105,7 +79,7 @@ const HomePage = () => {
 
   return (
     <div id="welcome">
-       <img src={Logo} alt="logo: Let's Get Quizzical" />
+      <img src={Logo} alt="logo: Let's Get Quizzical" />
       <form role="form" autoComplete="off">
         <label htmlFor="username">Username</label>
         <input
@@ -134,8 +108,8 @@ const HomePage = () => {
         />
         {renderJoin()}
       </form>
-      
-{/* Shows number of clients online */}
+
+      {/* Shows number of clients online */}
       <p>
         {playerCount <= 0
           ? "No Players Online"

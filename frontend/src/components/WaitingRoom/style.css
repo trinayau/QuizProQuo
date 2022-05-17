@@ -1,0 +1,28 @@
+#waiting-room {
+    background-image: url('../../images/home-desktop.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#waiting-room-heading {
+    font-size: 3rem;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #ea62cc;
+    box-shadow: 0 0 100px #F250CF,
+        0 0 10px #F250CFcc,
+        0 0 15px #ff8fc5b3,
+        0 0 30px #ff8fc599;
+    border-color: #ff8fc5;
+}
+
+
+@media screen and (max-width: 450px) {
+    #home-page {
+        background-image: url('../../images/home-mobile.jpg');
+    }
+}
