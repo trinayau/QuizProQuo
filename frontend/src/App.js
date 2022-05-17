@@ -1,6 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import { HomePage, SetGame, Lobby, Quiz } from "./pages";
+import {
+  HomePage,
+  SetGame,
+  Lobby,
+  Quiz,
+  ScorePage,
+  LeaderBoard,
+  NotFound
+} from "./pages";
 
 function App() {
   return (
@@ -11,6 +19,9 @@ function App() {
         <Route exact path="/game" element={<SetGame />} />
         <Route path="/waitingroom" element={<Lobby />} />
         <Route path="/quiz" element={<Quiz />} />
+        <Route path="/score" element={<ScorePage />} />
+        <Route path="/leaderboard" element={<LeaderBoard />} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </div>
   );

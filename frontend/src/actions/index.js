@@ -39,3 +39,17 @@ export const endQuestions = (finalAnswer) => ({
 });
 
 export const getScore = () => ({ type: "GET_SCORE" });
+
+export const getLeaderboardData = async () => {
+  try{
+      const response = await axios.get('https://localhost:3001/users')
+      const data = response.data;
+      const sort= data.sort((a, b) => {
+          return b.score - a.score;
+      })
+      return sort;
+
+  }catch(err){
+      console.warn(err)
+  }
+}

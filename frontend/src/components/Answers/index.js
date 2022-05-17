@@ -19,7 +19,7 @@ const Answers = (props) => {
 
   const finalAnswer = async () => {
     endQuestions(props.answer);
-    navigate("./scoreboard");
+    navigate("./score");
   };
 
   if (props.index === quizLength - 1) {
