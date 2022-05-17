@@ -8,7 +8,7 @@ import { fetchQuiz } from "../../actions";
 
 const Form = () => {
   const [difficulty, setDifficulty] = useState("easy");
-  const [numberOfQs, setNumberOfQs] = useState("5");
+  const [numberOfQs, setNumberOfQs] = useState("10");
   const [subject, setSubject] = useState(9);
   const [categoryList, setCategoryList] = useState({});
 

@@ -13,7 +13,6 @@ const Lobby = () => {
     useEffect(() => {  
         socket.emit('game-players', room, (res) => {
             const usernames = res.map(el => el.username)
-            console.log(usernames)
             setPlayers(usernames)
         })
     }, []);

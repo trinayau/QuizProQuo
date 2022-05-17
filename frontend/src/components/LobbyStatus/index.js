@@ -39,9 +39,6 @@ const LobbyStatus = ({host}) => {
         
     }, [ready]);
 
-
-// console.log(ready)
-
     const handleClick = (e) => {
         e.preventDefault();
         socket.emit('game-start', room)

@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 const Questions = (props) => {
 
   const results = useSelector((state) => state.quizReducer.results);
-  console.log(results);
 
   const questionLength = results.length;
 
@@ -15,7 +14,6 @@ const Questions = (props) => {
   containsEncodedComponents(props.question);
 
   let questionNumber = props.index + 1;
-  console.log(questionNumber);
 
   return (
     <div role="question-container" id="question-container">

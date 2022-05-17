@@ -5,8 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 function LeaderBoard() {
   const navigate = useNavigate();
+
+  //navigate to beginning but also refreshes page to change socket Id
   const handleClick = () => {
-    navigate("/");
+    navigate("/")
+    window.location.reload();
   };
 
   return (
