@@ -5,7 +5,7 @@ import io from "socket.io-client";
 import Logo from "../../images/logov1.png";
 import { useDispatch } from "react-redux";
 import { setHost, setPlayer, setID } from "../../actions/userType";
-const socket = io.connect("http://localhost:5001");
+import { socket } from '../../socket/index.js';
 
 const HomePage = () => {
   // const [categoryList, setCategoryList] = useState({});
@@ -45,10 +45,12 @@ const HomePage = () => {
     setUsrInput(e.target.value);
   };
 
+  //Handles creating room from form
   const handleCreate = (e) => {
     e.preventDefault();
     const player = usrInput;
     setUsername(player)
+    //Error handling for form
     if (player === undefined) {
       setError("Please enter a username to become a Quizzer");
     } else if (room === undefined) {
@@ -69,6 +71,38 @@ const HomePage = () => {
       });
     }
   };
+
+  const handleJoin = (e) => {
+    e.preventDefault();
+    const player = usrInput;
+    setUsername(player);
+    if (player === undefined) {
+        setError("Don't be rude, introduce yourself!");
+    } else if (room === undefined) {
+        setError("You need to create room or give an existing name");
+    } else {
+        const config = {
+            room: room,
+            username: player
+        }
+        socket.emit("join-room", config, (res) => {
+
+            console.log("socket response", res);
+
+            if (res.code === "success") {
+                setRoom(room);
+
+
+                dispatch(setPlayer(player, room));
+                navigate("/waitingroom");
+            } else {
+                setRoom(undefined);
+                setError(res.message);
+            }
+        });
+    }
+
+};
   
   const handleRoomInput = (e) => {
     setError("");
@@ -76,19 +110,20 @@ const HomePage = () => {
   };
 
   const renderJoin = () => {
-    let tags = null;
-
-    if (playerCount < 1) {
-      tags = "disabled";
+    let toggle = "join";
+    let joinText = "Join Room"
+    if (playerCount < 2) {
+      toggle = "disabled";
+      joinText = "No rooms to join"
     }
     return (
       <>
         <input
           type="submit"
-          className={tags}
+          className={toggle}
           name="joinQuiz"
-          value="Join"
-        //   onClick={handleJoin}
+          value={joinText}
+          onClick={handleJoin}
         />
       </>
     );
@@ -123,7 +158,7 @@ const HomePage = () => {
         <input
           type="submit"
           name="newQuiz"
-          value="NEW GAME"
+          value="New Game"
           onClick={handleCreate}
         />
         {renderJoin()}
