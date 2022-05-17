@@ -15,26 +15,34 @@ const io = new Server(server, {
   }
 })
 
+//Makes new instance of Games
 const games = new Games();
 
+//Initialises connected users array
+let users = [];
 
+//Connected socket
 io.on("connection", (socket) => {
-  // const users = [];
-  // for (let [id, socket] of io.of("/").sockets) {
-  //     users.push({
-  //         userID: id,
-  //         username: socket.username
-  //     });
-  // };
 
+socket.emit('assign-id', { id: socket.id});
+
+socket.on("join server", (username) => {
+  //Declares user object
+  const user = {
+    username,
+    id: socket.id
+  }
+  //Pushes connected user to users array and emits the users array
+  users.push(user);
+  io.emit("new user", users);
+});
 
 
 //Emits number of people online
   let participantCount = io.engine.clientsCount;
-  console.log(participantCount)
   io.emit("users", participantCount);
 
-  //Checks if there is room in games array
+  //Checks if there is room in games array, if not sends back a console.log success message to say room is created (but room isn't actually created until difficulty is chosen)
     socket.on("check-room", (roomName, callback) => {
       console.log("CLIENT REQUEST TO CREATE ROOM WITH " ,  roomName)
       if (games.checkRoomName(roomName)) {
@@ -47,9 +55,25 @@ io.on("connection", (socket) => {
                   })
       }
   });
+
+  //This actually creates the room
+  socket.on('add-config', (config, cb) => {
+
+    games.addGame(config.host, config.room, config.difficulty, config.count, config.subject );
+    socket.join(config.host)
+
+    games.addPlayer(config.username, config.room, config.host)
+
+    cb({
+        code: "success",
+        message: `SUCCESS: configuration has been added`
+    }); 
+})
+
 //On disconnect, count new number of clients and update participantCount
   socket.on('disconnect', () => {
-  
+    users = users.filter(u => u.id !== socket.id);
+    io.emit("new user", users);
     //makes io count the number of clients again
     participantCount = io.engine.clientsCount;
     io.emit("users", participantCount);
