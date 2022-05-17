@@ -5,7 +5,7 @@ import io from "socket.io-client";
 import Logo from "../../images/logov1.png";
 import { useDispatch } from "react-redux";
 import { setHost, setPlayer, setID } from "../../actions/userType";
-const socket = io.connect("http://localhost:3000");
+const socket = io.connect("http://localhost:5001");
 
 const HomePage = () => {
   // const [categoryList, setCategoryList] = useState({});
@@ -60,7 +60,7 @@ const HomePage = () => {
   const renderJoin = () => {
     let tags = null;
 
-    if (playerCount < 2) {
+    if (playerCount < 1) {
       tags = "disabled";
     }
 
@@ -71,7 +71,7 @@ const HomePage = () => {
           className={tags}
           name="joinQuiz"
           value="Join"
-          // onClick={handleJoin}
+        //   onClick={handleJoin}
         />
       </>
     );
@@ -112,8 +112,8 @@ const HomePage = () => {
       {/* Shows number of clients online */}
       <p>
         {playerCount <= 0
-          ? "No Players Online"
-          : `Players ready: ${playerCount}`}
+          ? "No Quizzers Online"
+          : `Quizzers Online: ${playerCount}`}
         {error && <div className="error">{error}</div>}
       </p>
     </div>
