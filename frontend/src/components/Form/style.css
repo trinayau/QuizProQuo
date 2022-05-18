@@ -160,8 +160,6 @@ button#play-button span:nth-child(4) {
     }
 }
 
-
-
 #game-heading {
     font-size: 3rem;
     font-weight: 200;
@@ -175,6 +173,7 @@ button#play-button span:nth-child(4) {
 }
 
 #backBtn {
+    cursor: pointer;
     top: 20px;
     border: none;
     position: absolute;
