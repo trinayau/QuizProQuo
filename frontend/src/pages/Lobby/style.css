@@ -1,5 +1,5 @@
 .lobby{
-    background-image: url('../../images/home-desktop.jpg');
+    background-image: url('../../images/bricks.jpeg');
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 100vh;
@@ -41,7 +41,7 @@
 
   @media screen and (max-width: 450px) {
     .lobby {
-        background-image: url('../../images/home-mobile.jpg');
+        background-image: url('../../images/bricks.jpeg');
         padding: 0rem 1.7rem;
     }
      #players{
