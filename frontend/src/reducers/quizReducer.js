@@ -19,7 +19,6 @@ const quizReducer = (state = init, action) => {
   const nextQuestionIndex = state.current_question_index + 1
   const score = state.score
 
-
   switch (action.type) {
     case "LOAD_QUESTIONS":
       return {
@@ -33,16 +32,20 @@ const quizReducer = (state = init, action) => {
       //at this point when change question, we want to know whether the answer they clicked was correct
       // if chosenAnswer and correct answer are the same move to next question but also add one to the score
       if (chosenAnswer === correctAnswer){
+        console.log('CORRECT')
           return{...state, current_question_index: nextQuestionIndex, score:score+1}
       } else{ 
+        console.log('INCORRECT next q, this is your chosenAnswer', chosenAnswer, 'this is the correctAnswer', correctAnswer)
           return{...state, current_question_index: nextQuestionIndex}
       };
 
     case "END_QUESTIONS":
       if (chosenAnswer === correctAnswer){
+        console.log('correct answer end question', )
         return{...state, score:score+1}
 
       } else{
+        console.log('INCORRECT end q, this is your chosenAnswer', chosenAnswer, 'this is the correctAnswer', correctAnswer)
           return{...state}
       }
       

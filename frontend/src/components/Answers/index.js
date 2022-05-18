@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { changeQuestion, endQuestions } from "../../actions";
 import "./style.css";
 const Answers = (props) => {
-  const nextQuestion = (answer) => dispatch(changeQuestion(answer));
-  const endQuestion = (finalAnswer) => dispatch(endQuestions(finalAnswer));
+  const nextQuestion = (answer) => {dispatch(changeQuestion(encodeURIComponent(answer))); };
+  const endQuestion = (finalAnswer) => {dispatch(endQuestions(encodeURIComponent(finalAnswer)))};
   const results = useSelector((state) => state.quizReducer.results);
   const quizLength = results.length;
   const dispatch = useDispatch();
@@ -18,9 +18,8 @@ const Answers = (props) => {
 
   let answers = handleAnswers(props.answer);
 
-
-  const finalAnswer = async () => {
-    endQuestion(props.answer);
+  const finalAnswer = async (i) => {
+    endQuestion(i);
     navigate("/score");
   };
 
