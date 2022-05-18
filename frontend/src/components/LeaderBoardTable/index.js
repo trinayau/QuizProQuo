@@ -11,7 +11,7 @@ const LeaderBoardTable = () => {
   //   async function getScores() {
   //     try {
   //       let { data } = await axios.get(
-  //         `https://quizzicalquiz.herokuapp.com/players`
+  //         `api`
   //       );
   //       console.log(data);
   //       data.sort((a, b) => b.score - a.score);
