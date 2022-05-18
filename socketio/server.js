@@ -74,27 +74,75 @@ socket.on('game-start', (roomName) => {
     io.to(roomName).emit('game-start', true)
 });
 
+socket.on('join-room', (config, cb) => {
+  //check room
+  console.log(config);
+  let foundRoom = games.canRoomBeJoined(config.room);
+  console.log('this is foundRoom',foundRoom)
+  if(foundRoom == 'ERROR') {
+    console.log('no room found')
+    const errorMsg = 'Room does not exist'
+    io.to(config.id).emit("no room", errorMsg)
+  } else {
+          console.log("adding player")
+          games.addPlayer(config.username, config.room, socket.id);
+          socket.join(config.room);
+          socket.emit(`${config.username} has joined the room`);
+          socket.emit('new peon', config.username)
+          let game = games.getGameByRoom(config.room);
+
+          cb({
+              code: "success",
+              player: config.username, 
+              score: 0 
+          });
+
+          io.to(game.host).emit("player-connected", { 
+              name: config.username, 
+              score: 0 
+          });
+        }
+
+  }
+     
+// }
+)
+
+
 let gamePlayers; 
 let roomNameVar; 
 socket.on('game-players', (roomName, cb) => {
     const data = games.getPlayerData(roomName)
-    console.log("Player data")
-    console.log(data)
     gamePlayers = data
     roomNameVar = roomName
-    // io.to(roomName).emit('data', data);
-
-    // socket.on('chat-message', (message) => {
-    //     const messageData = chatMessage(message, socket);
-    //     console.log(messageData);
     io.in(roomName).emit(data);
-    // })
 
     cb(
         data
     )
 
 })
+
+    socket.on('game-start', (roomName) => {
+        console.log("game started")
+
+        // cb(
+        //     {response: true}
+        // )
+        io.to(roomName).emit('game-start', true)
+    });
+    
+//Sends scores
+  socket.on('score',  (config, cb) => {
+  console.log("SCORE TALLY")
+  //get data
+  let scores =  games.addScore(config.room, config.username, config.score);
+  io.to(config.room).emit('score', scores);
+  cb({
+      code: "success",
+      scores: scores
+  })
+  });
 
 //On disconnect, count new number of clients and update participantCount
   socket.on('disconnect', () => {
