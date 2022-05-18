@@ -122,6 +122,7 @@ socket.on('game-players', (roomName, cb) => {
     )
 
 })
+io.to(roomNameVar).emit('game-players');
 
     socket.on('game-start', (roomName) => {
         console.log("game started")
@@ -131,7 +132,13 @@ socket.on('game-players', (roomName, cb) => {
         // )
         io.to(roomName).emit('game-start', true)
     });
-    
+  
+    socket.on('get-questions', (roomName, cb) => {
+      const data = games.getGame(roomName)
+      cb(data)
+    })
+
+
 //Sends scores
   socket.on('score',  (config, cb) => {
   console.log("SCORE TALLY")
