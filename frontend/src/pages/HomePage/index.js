@@ -122,6 +122,7 @@ const HomePage = () => {
       <>
         <button
           type="submit"
+          id="join"
           className={toggle}
           name="joinQuiz"
           value={joinText}

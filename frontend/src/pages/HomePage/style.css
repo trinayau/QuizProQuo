@@ -265,131 +265,131 @@ button.newQuiz span:nth-child(4) {
 
 /* JOIN QUIZ BUTTON */
 
-button {
-    background-color: transparent;
-    border-style: none;
-    position: relative;
-    display: inline-block;
-    padding: 25px 30px;
-    margin: 40px 0;
-    color: #f403d8;
-    text-decoration: none;
-    text-transform: uppercase;
-    transition: 0.5s;
-    letter-spacing: 4px;
-    overflow: hidden;
-    margin-right: 50px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: bolder;
-}
-
-
-button:hover {
-    background: #f403d8;
-    color: #050801;
-    box-shadow: 0 0 5px #f403d8,
-        0 0 25px #f403d8,
-        0 0 50px #f403d8,
-        0 0 200px #f403d8;
-    -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
-}
-
-button:nth-child(1) {
-    filter: hue-rotate(270deg);
-}
-
-button:nth-child(2) {
-    filter: hue-rotate(110deg);
-}
-
-button span {
-    position: absolute;
-    display: block;
-}
-
-button span:nth-child(1) {
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #f403d8);
-    animation: animate1 1.75s linear infinite;
-}
-
-@keyframes animate1 {
-    0% {
-        left: -100%;
+    button#join {
+        background-color: transparent;
+        border-style: none;
+        position: relative;
+        display: inline-block;
+        padding: 25px 30px;
+        margin: 40px 0;
+        color: #f403d8;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: 0.5s;
+        letter-spacing: 4px;
+        overflow: hidden;
+        margin-right: 50px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: bolder;
     }
-
-    50%,
-    100% {
-        left: 100%;
+    
+    button#join:hover {
+        background: #f403d8;
+        color: #050801;
+        box-shadow: 0 0 5px #f403d8,
+            0 0 25px #f403d8,
+            0 0 50px #f403d8,
+            0 0 200px #f403d8;
+        -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
     }
-}
-
-button span:nth-child(2) {
-    top: -100%;
-    right: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(180deg, transparent, #f403d8);
-    animation: animate2 1.75s linear infinite;
-    animation-delay: 0.45s;
-}
-
-@keyframes animate2 {
-    0% {
+    
+    button#join:nth-child(1) {
+        filter: hue-rotate(270deg);
+    }
+    
+    button#join:nth-child(2) {
+        filter: hue-rotate(110deg);
+    }
+    
+    button#join span {
+        position: absolute;
+        display: block;
+    }
+    
+    button#join span:nth-child(1) {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #f403d8);
+        animation: animate1 1.75s linear infinite;
+    }
+    
+    @keyframes animate1 {
+        0% {
+            left: -100%;
+        }
+    
+        50%,
+        100% {
+            left: 100%;
+        }
+    }
+    
+    button#join span:nth-child(2) {
         top: -100%;
+        right: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, #f403d8);
+        animation: animate2 1.75s linear infinite;
+        animation-delay: 0.45s;
     }
-
-    50%,
-    100% {
-        top: 100%;
+    
+    @keyframes animate2 {
+        0% {
+            top: -100%;
+        }
+    
+        50%,
+        100% {
+            top: 100%;
+        }
     }
-}
-
-button span:nth-child(3) {
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(270deg, transparent, #f403d8);
-    animation: animate3 1.75s linear infinite;
-    animation-delay: 0.88s;
-}
-
-@keyframes animate3 {
-    0% {
-        right: -100%;
+    
+    button#join span:nth-child(3) {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(270deg, transparent, #f403d8);
+        animation: animate3 1.75s linear infinite;
+        animation-delay: 0.88s;
     }
-
-    50%,
-    100% {
-        right: 100%;
+    
+    @keyframes animate3 {
+        0% {
+            right: -100%;
+        }
+    
+        50%,
+        100% {
+            right: 100%;
+        }
     }
-}
-
-
-button span:nth-child(4) {
-    bottom: -100%;
-    left: 0;
-    width: 2px;
-    height: 100%;
-    background: linear-gradient(360deg, transparent, #f403d8);
-    animation: animate4 1.75s linear infinite;
-    animation-delay: 1.32s;
-}
-
-@keyframes animate4 {
-    0% {
+    
+    
+    button#join span:nth-child(4) {
         bottom: -100%;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, #f403d8);
+        animation: animate4 1.75s linear infinite;
+        animation-delay: 1.32s;
     }
-
-    50%,
-    100% {
-        bottom: 100%;
+    
+    @keyframes animate4 {
+        0% {
+            bottom: -100%;
+        }
+    
+        50%,
+        100% {
+            bottom: 100%;
+        }
     }
-}
+    
 
 #welcome p {
     width: 100%;
