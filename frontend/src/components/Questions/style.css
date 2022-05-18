@@ -1,34 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+
 :root {
-    /* --heading-text: "Pacifico";
-    --content-text: "Nunito", sans-serif; */
+    --heading-text: "Pacifico";
+    --content-text: "Nunito", sans-serif;
     --content: white;
 }
 
 h3 {
-    /* font-family: var(--content-text); */
+    font-family: var(--content-text);
     color: var(--content);
     text-align: center;
     margin: 0 auto;
 }
 
-#quizCard {
+#question-container {
     text-align: center;
-    width: 600px;
-    margin: 0 auto;
+    width: 100%;
 }
 
-#quiz-heading {
-    width: 70%;
-    margin-bottom: 10%;
+#question-heading {
+    margin-bottom: 20%;
     border-radius: 10px;
-    font-size: 3rem;
-    color: white;
     background-color: #ea62cc;
     box-shadow: 0 0 100px #F250CF,
-        0 0 100px #F250CFcc,
-        0 0 150px #ff8fc5b3,
-        0 0 300px #ff8fc599;
+        0 0 10px #F250CFcc,
+        0 0 15px #ff8fc5b3,
+        0 0 30px #ff8fc599;
     border-color: #ff8fc5;
+    font-size: 45px;
+}
+
+#question {
+    margin-top: 40px;
+    font-size: 1.5rem;
+    font-family: 'Raleway', sans-serif;
 }
 
 @media screen and (max-width: 450px) {

@@ -3,7 +3,6 @@ import "./style.css";
 import { useSelector } from "react-redux";
 
 const Questions = (props) => {
-
   const results = useSelector((state) => state.quizReducer.results);
 
   const questionLength = results.length;
@@ -18,11 +17,10 @@ const Questions = (props) => {
   return (
     <div role="question-container" id="question-container">
       <h3 style={{ color: "white" }}>
-        <span id="question-num">
-          Question {questionNumber} of {questionLength}:
+        <span id="question-heading">
+          Question {questionNumber} of {questionLength}
         </span>
-        <br></br>
-        {decodedQuestion}
+        <p id="question">{decodedQuestion} </p>
       </h3>
     </div>
   );
