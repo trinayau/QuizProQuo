@@ -1,23 +1,29 @@
 #cards {
+    margin-bottom: 30px;
     color: white;
     display: block;
     text-align: center;
     padding: 1.2rem;
-    background-color: lightcyan;
-    color: #2d6cdf;
-    border-radius: 4px;
+    background-color: #7d739ca3;
+    color: white;
+    border-radius: 30px;
     border: none;
     display: flex;
     justify-content: space-evenly;
-    width: 100%;
+    width: 600px;
     margin-top: 1rem;
     font-family: var(--content-text);
+    font-size: 1.2rem;
 }
 
 #cards:hover {
+    background: #03e9f4;
+    box-shadow: 0 0 5px #03e9f4,
+        0 0 25px #03e9f4,
+        0 0 50px #03e9f4,
+        0 0 200px #03e9f4;
     cursor: pointer;
-    background-color: #2d6cdf;
-    color: lightcyan;
+    color: black;
     transition-duration: 0.4s;
 }
 

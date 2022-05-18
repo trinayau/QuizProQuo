@@ -3,7 +3,6 @@ import "./style.css";
 import { useSelector } from "react-redux";
 
 const Questions = (props) => {
-
   const results = useSelector((state) => state.quizReducer.results);
 
   const questionLength = results.length;
