@@ -22,7 +22,8 @@ class Games {
         
                 // let game = new Game(hostID, roomName, difficulty, count, subject);
                 this.games.push(game);
-                // this.games.forEach(room => console.log(room))
+   
+                this.games.forEach(room => console.log(room))
                 return game;
     }
         
@@ -85,8 +86,8 @@ class Games {
         //find the game
         let game = this.games.find( y => y.room == room);
         //in the room find the player usernmae
-        // console.log(game)
-        // console.log(username)
+        console.log(game, 'addscore gameroom')
+        console.log(username, 'addscore username')
         try{
             let player = game.players.find(p => p.username === username)
             //and add the score
@@ -95,7 +96,7 @@ class Games {
             return game.players
         }
         catch (err) {
-            console.log("add score has : " + err)
+            console.log("add score error: " + err)
             return { err: err }   
         }
     }

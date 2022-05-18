@@ -20,7 +20,6 @@ const Lobby = () => {
 
     useEffect(()=> {
         setPlayers([...players, newPlayer])
-        console.log('new player added', players)
     },[newPlayer])
 
     socket.on('new peon', user => {

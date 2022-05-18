@@ -11,9 +11,11 @@ const ScorePage = () => {
   const score = useSelector((state) => state.quizReducer.score); //get score from state
   const results = useSelector((state) => state.quizReducer.results);
   const percentage = Math.round((score / results.length) * 100);
-  const [allScores, setAllScores] = useState("");
+  const [allScores, setAllScores] = useState([]);
   const [players, setPlayers] = useState("");
   const room = useSelector((state) => state.user.room);
+  const [winner, setWinner] = useState("");
+  const [updatePlayer, setUpdatePlayer] = useState(false)
 
   useEffect(() => {
     let config = {
@@ -23,21 +25,20 @@ const ScorePage = () => {
     };
 
     socket.emit("score", config, (res) => {
-      const scoresArr = res.scores.map((el) => el.score);
-      // console.log(scoresArr);
-      const userArr = res.scores.map((el) => el.username);
-      // console.log(userArr);
-      setAllScores(scoresArr);
-      setPlayers(userArr);
+      console.log(res, 'res')
+      // const scoresArr = res.scores.map((el) => el.score);
+      // const userArr = res.scores.map((el) => el.username);
+      const scoreArray = res.scores.map((player) => {return {username: player.username, score: player.score}});
+      console.log(scoreArray, 'scoreArray')
+      setAllScores(scoreArray)
     });
-  }, []);
 
-//   const getPlayers = () => {
-//     //TODO: extract from redux room name and store to roomName
-//     socket.on("get-player-data", roomName, (res) => {
-//       console.log(res);
-//     });
-//   };
+    // socket.on("update score", res => {
+    //   console.log(res, 'res')
+    // })
+  }, [updatePlayer]);
+
+
 
 //   const sendResults = () => {
 //     return new Promise(async (resolve, reject) => {
@@ -73,11 +74,13 @@ const ScorePage = () => {
   const winnerIs = (player, score) => {
     let str;
     if (players.length <= 1) {
-      str = "👑";
+      str = "WINNER";
     } else if (player.length > 1) {
       if (highest <= score) {
         highest = score;
-        str = "👑";
+        str = "WINNER!";
+      } else {
+        str = "LOSER (lol)"
       }
     }
     return str;
@@ -94,14 +97,14 @@ const ScorePage = () => {
             <h3>score</h3>
           </div>
 
-          {players &&
-            players.map((player, i) => (
+          {allScores &&
+            allScores.map((p, i) => (
               <ScoreResults
                 className="right"
-                player={player}
+                player={p.username}
                 key={i}
-                text={allScores[i]}
-                winner={winnerIs(player, allScores[i])}
+                text={p.score}
+                winner={winnerIs(p.username, p.score)}
               />
             ))}
         </div>
