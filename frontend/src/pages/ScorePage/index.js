@@ -36,19 +36,18 @@ const ScorePage = () => {
     // socket.on("update score", res => {
     //   console.log(res, 'res')
     // })
-  }, [updatePlayer]);
+  }, []);
 
-
-
-  const sendResults = () => {
+  const sendResults = (w) => {
     return new Promise(async (resolve, reject) => {
       try {
+        let king = theKing();
         const options = {
           headers: { "Content-Type": "application/json" },
         };
         const results = {
-          player: username,
-          score: percentage,
+          player: king,
+          score: score,
         };
 
         const { data } = await axios.post(
@@ -66,11 +65,29 @@ const ScorePage = () => {
       }
     });
   };
+
   useEffect(() => {
     sendResults();
-  }, [score]);
+    console.log('Sending results from score page')
+  }, []);
 
   let highest = 0;
+
+  const theKing = () => {
+    let highScore = 0;
+    let king = "";
+    console.log(allScores)
+    allScores.forEach((s)=>{
+      if(s.score > highScore){
+        king = s.username;
+        highScore = s.score
+      } else {
+      console.log(s.username, 'is not the winner')
+      }
+    })
+    return king;
+  }
+  console.log(theKing());
   const winnerIs = (player, score) => {
     let str;
     if (players.length <= 1) {
@@ -79,6 +96,7 @@ const ScorePage = () => {
       if (highest <= score) {
         highest = score;
         str = "WINNER!";
+        setWinner(player)
       } else {
         str = "LOSER (lol)"
       }
