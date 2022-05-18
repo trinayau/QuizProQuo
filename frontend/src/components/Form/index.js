@@ -10,7 +10,7 @@ import { faAngleDoubleLeft } from "@fortawesome/fontawesome-free-solid";
 
 const Form = () => {
   const [difficulty, setDifficulty] = useState("easy");
-  const [numberOfQs, setNumberOfQs] = useState("10");
+  const [numberOfQs, setNumberOfQs] = useState("5");
   const [subject, setSubject] = useState(9);
   const [categoryList, setCategoryList] = useState({});
 

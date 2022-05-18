@@ -34,7 +34,7 @@ class Score {
                     const db = await init();
                     const createScoreEntry = await db
                     .collection("scoreBoard")
-                    .insertOne({username: newScoreEntry.username, score: newScoreEntry.score});
+                    .insertOne({username: newScoreEntry.player, score: newScoreEntry.score});
                     res(createScoreEntry);
                 } catch (err) {
                     rej(`Error creating score entry: ${err}`);
