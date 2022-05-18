@@ -3,7 +3,6 @@ const init = require("../db/mongoInit");
 //outlining the data
 class Score {
     constructor(data) {
-        this.gameId = data.gameId;
         this.username = data.username;
         this.score = data.score;
     }
@@ -12,7 +11,7 @@ class Score {
     static get all(){
         return new Promise(async(resolve, reject) => {
             try{
-                console.log("String here happening", init);
+                //console.log("String here happening", init);
                 const db = await init();
                 const dbData = await db.collection("scoreBoard").find({}).toArray();
                 const allScores = dbData.map((d) => new Score(d));
@@ -35,12 +34,7 @@ class Score {
                     const db = await init();
                     const createScoreEntry = await db
                     .collection("scoreBoard")
-                    .findOneAndUpdate(
-                        { gameId: newScoreEntry.gameId },
-                        { username: newScoreEntry.username },
-                        //check back here. may be need the { $push: {}} Operator
-                        { score: newScoreEntry.score },
-                    );
+                    .insertOne({username: newScoreEntry.username, score: newScoreEntry.score});
                     res(createScoreEntry);
                 } catch (err) {
                     rej(`Error creating score entry: ${err}`);
@@ -64,11 +58,7 @@ class Score {
     })
 }
 
-//finding result by score value
-
 }
 
-
-//consult ADAY repo for the static get
 
 module.exports = Score;
