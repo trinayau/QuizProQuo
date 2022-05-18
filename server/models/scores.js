@@ -3,7 +3,6 @@ const init = require("../db/mongoInit");
 //outlining the data
 class Score {
     constructor(data) {
-        this.gameId = data.gameId;
         this.username = data.username;
         this.score = data.score;
     }
@@ -36,12 +35,7 @@ class Score {
                     const db = await init();
                     const createScoreEntry = await db
                     .collection("scoreBoard")
-                    .findOneAndUpdate(
-                        { gameId: newScoreEntry.gameId },
-                        { username: newScoreEntry.username },
-                        //check back here. may be need the { $push: {}} Operator
-                        { score: newScoreEntry.score },
-                    );
+                    .insertOne({username: newScoreEntry.username, score: newScoreEntry.score});
                     res(createScoreEntry);
                 } catch (err) {
                     rej(`Error creating score entry: ${err}`);

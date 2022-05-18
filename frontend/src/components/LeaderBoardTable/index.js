@@ -11,7 +11,7 @@ const LeaderBoardTable = () => {
   //   async function getScores() {
   //     try {
   //       let { data } = await axios.get(
-  //         `https://quizzicalquiz.herokuapp.com/players`
+  //         `http://localhost:3001/scoreboard`
   //       );
   //       console.log(data);
   //       data.sort((a, b) => b.score - a.score);
@@ -22,6 +22,24 @@ const LeaderBoardTable = () => {
   //   }
   //   getScores();
   // }, []);
+
+//Displaying the scores and usernames in leaderboard
+
+/*componenetDidMount = () => {
+  this.getScores();
+}
+
+getScores = () => {
+  axios.get('http://localhost:3001/scoreboard')
+  .then((response) => {
+    const data = response.data;
+    this.setState({ posts: data });
+    console.log('Data has been received!');
+  })
+  .catch(() => {
+    alert('Error retrieving data')
+  });
+}*/
 
   return (
     <>
@@ -37,5 +55,38 @@ const LeaderBoardTable = () => {
     </>
   );
 };
+
+/*function createHabitElement(b) {
+  if (!b) {
+    throw "No data provided";
+  }
+
+  const elem = document.createElement("div");
+  elem.className = "card"
+  const t = document.createElement("div")
+  t.className = "card-body"
+  t.textContent = b;
+  elem.append(t)
+  return elem;
+
+}
+
+function collect() {
+  fetch(`http://localhost:3001/habits/${localStorage.getItem("username")}`)
+    .then((res) => res.json())
+    .then((data) => {
+      data.habit.habit.forEach((b) => {
+        const x = createHabitElement(b);
+        
+        document.querySelector("#data").appendChild(x);
+      });
+    })
+    .catch((err) => console.log(err));
+}
+collect();*/
+
+
+
+
 
 export default LeaderBoardTable;

@@ -6,21 +6,18 @@ db.scoreBoard.drop(); //drop table if exists
 //sample data here
 db.scoreBoard.insertMany([
     {
-        gameId: 'test-room',
         username: 'billy',
-        score: 13,
+        score: "13",
     },
 
     {
-        gameId: 'meep',
         username: 'ooga',
-        score: 25,
+        score: "25",
     },
 
     {
-        gameId: 'hi',
         username: 'there',
-        score: 2,
+        score: "2",
     },
 
 ])
