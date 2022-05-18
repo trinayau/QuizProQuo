@@ -2,9 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeQuestion, endQuestions } from "../../actions";
 import "./style.css";
+
 const Answers = (props) => {
-  const nextQuestion = (answer) => {dispatch(changeQuestion(encodeURIComponent(answer))); };
-  const endQuestion = (finalAnswer) => {dispatch(endQuestions(encodeURIComponent(finalAnswer)))};
+  const nextQuestion = (answer) => {
+    dispatch(changeQuestion(encodeURIComponent(answer)));
+  };
+  const endQuestion = (finalAnswer) => {
+    dispatch(endQuestions(encodeURIComponent(finalAnswer)));
+  };
   const results = useSelector((state) => state.quizReducer.results);
   const quizLength = results.length;
   const dispatch = useDispatch();
@@ -12,8 +17,10 @@ const Answers = (props) => {
 
   //handles the % and & in answers returned from opentrivia db
   const handleAnswers = (answer) => {
-    const decodedAnswer = answer.map(a => {return decodeURIComponent(a)})
-    return decodedAnswer
+    const decodedAnswer = answer.map((a) => {
+      return decodeURIComponent(a);
+    });
+    return decodedAnswer;
   };
 
   let answers = handleAnswers(props.answer);
@@ -29,17 +36,13 @@ const Answers = (props) => {
       //   {answers}
       // </button>
       <div className="options">
-          {answers &&
-            answers.map((i) => (
-              <button
-              id="cards"
-                key={i}
-                onClick={() => finalAnswer(i)}
-              >
-                {i}
-              </button>
-            ))}
-        </div>
+        {answers &&
+          answers.map((i) => (
+            <button id="cards" key={i} onClick={() => finalAnswer(i)}>
+              {i}
+            </button>
+          ))}
+      </div>
     );
   } else {
     return (
@@ -47,17 +50,13 @@ const Answers = (props) => {
       //   {answers}
       // </button>
       <div className="options">
-          {answers &&
-            answers.map((i) => (
-              <button
-              id="cards"
-                key={i}
-                onClick={() => nextQuestion(i)}
-              >
-                {i}
-              </button>
-            ))}
-        </div>
+        {answers &&
+          answers.map((i) => (
+            <button id="cards" key={i} onClick={() => nextQuestion(i)}>
+              {i}
+            </button>
+          ))}
+      </div>
     );
   }
 };
