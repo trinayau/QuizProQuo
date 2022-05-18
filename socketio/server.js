@@ -78,7 +78,8 @@ socket.on('join-room', (config, cb) => {
   //check room
   console.log(config);
   let foundRoom = games.canRoomBeJoined(config.room);
-  console.log('this is foundRoom',foundRoom)
+  console.log('join-room', foundRoom)
+
   if(foundRoom == 'ERROR') {
     console.log('no room found')
     const errorMsg = 'Room does not exist'
@@ -88,7 +89,7 @@ socket.on('join-room', (config, cb) => {
           games.addPlayer(config.username, config.room, socket.id);
           socket.join(config.room);
           socket.emit(`${config.username} has joined the room`);
-          io.in(config.room).emit('new peon', config.username)
+          io.emit('new peon', config.username)
           let game = games.getGameByRoom(config.room);
 
           cb({
@@ -102,10 +103,7 @@ socket.on('join-room', (config, cb) => {
               score: 0 
           });
         }
-
   }
-     
-// }
 )
 
 

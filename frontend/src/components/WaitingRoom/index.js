@@ -18,7 +18,13 @@ const Lobby = () => {
         })
     }, [newPlayer]);
 
+    useEffect(()=> {
+        setPlayers([...players, newPlayer])
+        console.log('new player added', players)
+    },[newPlayer])
+
     socket.on('new peon', user => {
+        console.log(user)
         setNewPlayer(user)
     })
 
@@ -30,8 +36,7 @@ const Lobby = () => {
 
             <div id="players">
            
-            {players &&
-            players.map((player) => <PlayerBubble key={players.indexOf(player)} player={player} />)} 
+            {players.map((player) => <PlayerBubble key={players.indexOf(player)} player={player} />)} 
             
             </div>
            

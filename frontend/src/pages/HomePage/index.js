@@ -64,8 +64,6 @@ const HomePage = () => {
       setError("To create a room or join a game, please set a room name");
     } else {
       socket.emit("check-room", room, (res) => {
-        console.log("socket response", res);
-
         if (res.code === "success") {
           setRoom(room);
           dispatch(setHost(player, room));

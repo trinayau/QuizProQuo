@@ -30,7 +30,6 @@ const LobbyStatus = ({host}) => {
         //   dispatch(playerReady(socket))
         // })
         socket.emit('get-questions', room, (res) => {
-            console.log(res)
             setSubject(res.subject);
             setDifficulty(res.difficulty);
             setNo(res.count)
@@ -53,7 +52,6 @@ const LobbyStatus = ({host}) => {
     }
        //changing subject from number to word
        let subjectWord;
-
        switch(subject){
             case "9":
                subjectWord = 'General Knowledge';
