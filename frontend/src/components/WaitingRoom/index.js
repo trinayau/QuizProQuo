@@ -15,7 +15,6 @@ const Lobby = () => {
         socket.emit('game-players', room, (res) => {
             const usernames = res.map(el => el.username)
             setPlayers(usernames)
-            console.log(players)
         })
     }, [newPlayer]);
 

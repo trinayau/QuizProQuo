@@ -11,7 +11,7 @@ const Questions = (props) => {
   function containsEncodedComponents(question) {
     return decodeURIComponent(question);
   }
-  containsEncodedComponents(props.question);
+  const decodedQuestion = containsEncodedComponents(props.question);
 
   let questionNumber = props.index + 1;
 
@@ -22,7 +22,7 @@ const Questions = (props) => {
           Question {questionNumber} of {questionLength}:
         </span>
         <br></br>
-        {containsEncodedComponents(props.question)}
+        {decodedQuestion}
       </h3>
     </div>
   );
