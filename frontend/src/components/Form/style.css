@@ -40,20 +40,17 @@ label {
 }
 
 #play-button {
+    background-color: tra;
     font-size: 18px;
     margin-bottom: 10px;
     text-align: center;
-    color: #242223;
     padding: 0.5rem 1.2rem;
     color:
         wheat;
     display: inline-block;
-    border-radius: 50px;
     width: 70%;
     margin-right: auto;
     margin-left: auto;
-    background-color:
-        #3D238A;
 }
 
 #play-button:hover {

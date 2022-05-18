@@ -1,9 +1,9 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {socket} from '../../socket/index.js';
-import { useSelector, useDispatch } from 'react-redux'
-import {roomConfig} from "../../actions/roomConfig"
+import { socket } from "../../socket/index.js";
+import { useSelector, useDispatch } from "react-redux";
+import { roomConfig } from "../../actions/roomConfig";
 import { fetchQuiz } from "../../actions";
 
 const Form = () => {
@@ -12,9 +12,9 @@ const Form = () => {
   const [subject, setSubject] = useState(9);
   const [categoryList, setCategoryList] = useState({});
 
-  const roomName = useSelector(state => state.user.room);
-  const id = useSelector(state => state.user.id);
-  const username = useSelector(state => state.user.user.username);
+  const roomName = useSelector((state) => state.user.room);
+  const id = useSelector((state) => state.user.id);
+  const username = useSelector((state) => state.user.user.username);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ const Form = () => {
       setCategoryList((prevState) => ({ ...prevState, [data.id]: data.name }));
     });
   };
- //fetches categories once when page loads
+  //fetches categories once when page loads
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -50,7 +50,7 @@ const Form = () => {
   };
 
   const handleChangeSubject = (e) => {
-    setSubject(e.target.value)
+    setSubject(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -58,20 +58,20 @@ const Form = () => {
 
     dispatch(fetchQuiz(numberOfQs, subject, difficulty));
 
-    const config =  {
+    const config = {
       host: id,
-      room: roomName, 
-      difficulty: difficulty, 
+      room: roomName,
+      difficulty: difficulty,
       count: numberOfQs,
       subject: subject,
-      username: username
-    }
+      username: username,
+    };
     //sends to redux store
-    dispatch(roomConfig(numberOfQs,subject,difficulty));
-    
+    dispatch(roomConfig(numberOfQs, subject, difficulty));
+
     //sends to socket server which creates a room
     socket.emit("add-config", config, (res) => {
-      console.log(res)
+      console.log(res);
     });
 
     navigate("/waitingroom");
@@ -121,7 +121,18 @@ const Form = () => {
           </select>
         </label>
         <br />
-        <input onClick={handleSubmit} type="submit" value="PLAY" id="play-button" />
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          value="PLAY"
+          id="play-button"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          PLAY
+        </button>
       </form>
     </>
   );
