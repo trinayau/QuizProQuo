@@ -5,7 +5,9 @@ import io from "socket.io-client";
 import Logo from "../../images/logov1.png";
 import { useDispatch } from "react-redux";
 import { setHost, setPlayer, setID } from "../../actions/userType";
-import { socket } from '../../socket/index.js';
+import { socket } from "../../socket/index.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrophy } from "@fortawesome/fontawesome-free-solid";
 
 const HomePage = () => {
   // const [categoryList, setCategoryList] = useState({});
@@ -25,27 +27,24 @@ const HomePage = () => {
   //On load, socket will listen for number of users being emitted from socket server
   useEffect(() => {
     socket.on("users", (users) => setPlayerCount(users));
-    socket.on('new user', allUsers=>{setAllUsers(allUsers)});
+    socket.on("new user", (allUsers) => {
+      setAllUsers(allUsers);
+    });
   }, []);
 
-  socket.on('no room', msg => {
-    setError(msg)
-  })
+  socket.on("no room", (msg) => {
+    setError(msg);
+  });
 
-  useEffect(()=> {
-
-    socket.on('assign-id', id => dispatch(setID(id)))
+  useEffect(() => {
+    socket.on("assign-id", (id) => dispatch(setID(id)));
     //Emits to server the set username when username changes
-    socket.emit('join server', username);
-  },[username])
+    socket.emit("join server", username);
+  }, [username]);
 
   const renderUser = (user, i) => {
-    return (
-      <p key={i}>
-        {user.username}
-      </p>
-    )
-  }
+    return <p key={i}>{user.username}</p>;
+  };
 
   const handleInput = (e) => {
     setError(undefined);
@@ -56,7 +55,7 @@ const HomePage = () => {
   const handleCreate = (e) => {
     e.preventDefault();
     const player = usrInput;
-    setUsername(player)
+    setUsername(player);
     //Error handling for form
     if (player === undefined) {
       setError("Please enter a username to become a Quizzer");
@@ -81,33 +80,32 @@ const HomePage = () => {
 
   const handleJoin = (e) => {
     e.preventDefault();
-    setError("")
+    setError("");
     const player = usrInput;
     setUsername(player);
     if (player === undefined) {
-        setError("Don't be rude, introduce yourself!");
+      setError("Don't be rude, introduce yourself!");
     } else if (room === undefined) {
-        setError("You need to create room or give an existing name");
+      setError("You need to create room or give an existing name");
     } else {
-        const config = {
-            room: room,
-            username: player,
-            id: socket.id
+      const config = {
+        room: room,
+        username: player,
+        id: socket.id,
+      };
+      socket.emit("join-room", config, (res) => {
+        if (res.code === "success") {
+          setRoom(room);
+          dispatch(setPlayer(player, room));
+          navigate("/waitingroom");
+        } else {
+          setRoom(undefined);
+          setError(res.message);
         }
-        socket.emit("join-room", config, (res) => {
-            if (res.code === "success") {
-                setRoom(room);
-                dispatch(setPlayer(player, room));
-                navigate("/waitingroom");
-            } else {
-                setRoom(undefined);
-                setError(res.message);
-            }
-        });
+      });
     }
+  };
 
-};
-  
   const handleRoomInput = (e) => {
     setError("");
     setRoom(e.target.value);
@@ -115,31 +113,43 @@ const HomePage = () => {
 
   const renderJoin = () => {
     let toggle = "join";
-    let joinText = "Join Room"
+    let joinText = "Join Room";
     if (playerCount < 2) {
       toggle = "disabled";
-      joinText = "No rooms to join"
+      joinText = "No rooms to join";
     }
     return (
       <>
-        <input
+        <button
           type="submit"
           className={toggle}
           name="joinQuiz"
           value={joinText}
           onClick={handleJoin}
-        />
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          JOIN QUIZ
+        </button>
       </>
     );
   };
 
+  const leaderBoard = () => {
+    navigate("./leaderboard");
+  };
 
   return (
     <div id="welcome">
       {/* <img src={Logo} alt="Quiz Pro Quo logo" /> */}
+      <p id="leaderboardIcon" onClick={leaderBoard}>
+        LEADERBOARD <FontAwesomeIcon className="iconT" icon={faTrophy} beat />
+      </p>
       <h1>Quiz Pro Quo</h1>
       <form>
-      <label htmlFor="username">Username</label>
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           id="username"
@@ -148,9 +158,8 @@ const HomePage = () => {
           value={usrInput || ""}
           onChange={handleInput}
         />
-        </form>
+      </form>
       <form role="form" autoComplete="off">
-    
         <label htmlFor="roomName">Room Name</label>
         <input
           type="text"
@@ -160,12 +169,21 @@ const HomePage = () => {
           value={room || ""}
           onChange={handleRoomInput}
         />
-        <input
+
+        <button
           type="submit"
           name="newQuiz"
+          className="newQuiz"
           value="New Game"
           onClick={handleCreate}
-        />
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          NEW GAME
+        </button>
+
         {renderJoin()}
       </form>
 
@@ -177,7 +195,9 @@ const HomePage = () => {
         {error && <p className="error">{error}</p>}
       </div>
       <div>
-        {allUsers.length <= 0 ? "No Quizzers Online :(" : `Quizzers Online: ${playerCount}` && allUsers.map(renderUser)}
+        {allUsers.length <= 0
+          ? "No Quizzers Online :("
+          : `Quizzers Online: ${playerCount}` && allUsers.map(renderUser)}
       </div>
     </div>
   );
