@@ -109,7 +109,6 @@ class Games {
     canRoomBeJoined(roomName){
             console.log("Looking for room")
                 const game =  this.games.filter(game => {console.log(game.room === roomName); return game.room === roomName});
-                console.log('game is:', game)
                 if (game.length > 0){
                     return game;
                 } else {
@@ -117,12 +116,8 @@ class Games {
                 }
     }
     getGameByRoom(roomName) {
-        console.log(roomName)
-        // if(this.games){
         this.games.forEach(game => console.log(game))
-
         const game =  this.games.filter(game => {console.log(game.room === roomName); return game.room === roomName});
-       
         return game;
     };
 
