@@ -41,35 +41,14 @@ const ScorePage = () => {
     // })
   }, []);
 
-<<<<<<< HEAD
   const sendResults = (w) => {
-=======
-  //   const sendResults = () => {
-  //     return new Promise(async (resolve, reject) => {
-  //       try {
-  //         const options = {
-  //           headers: { "Content-Type": "application/json" },
-  //         };
-  //         const results = {
-  //           player: username,
-  //           score: percentage,
-  //         };
-  //         console.log(results);
-  //         const { data } = await axios.post(
-  //           `https://localhost:3001/users`,
-  //           results,
-  //           options
-  //         );
-  const sendResults = () => {
->>>>>>> 12c8c0a6e8d8708e9cfc86ad0a6c26ba322a45a7
     return new Promise(async (resolve, reject) => {
       try {
-        let king = theKing();
         const options = {
           headers: { "Content-Type": "application/json" },
         };
         const results = {
-          player: king,
+          player: username,
           score: score,
         };
 
@@ -96,21 +75,6 @@ const ScorePage = () => {
 
   let highest = 0;
 
-  const theKing = () => {
-    let highScore = 0;
-    let king = "";
-    console.log(allScores)
-    allScores.forEach((s)=>{
-      if(s.score > highScore){
-        king = s.username;
-        highScore = s.score
-      } else {
-      console.log(s.username, 'is not the winner')
-      }
-    })
-    return king;
-  }
-  console.log(theKing());
   const winnerIs = (player, score) => {
     let str;
     if (players.length <= 1) {
