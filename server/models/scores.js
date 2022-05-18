@@ -11,7 +11,7 @@ class Score {
     static get all(){
         return new Promise(async(resolve, reject) => {
             try{
-                console.log("String here happening", init);
+                //console.log("String here happening", init);
                 const db = await init();
                 const dbData = await db.collection("scoreBoard").find({}).toArray();
                 const allScores = dbData.map((d) => new Score(d));
@@ -59,11 +59,7 @@ class Score {
     })
 }
 
-//finding result by score value
-
 }
 
-
-//consult ADAY repo for the static get
 
 module.exports = Score;

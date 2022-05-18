@@ -3,7 +3,7 @@ const Score = require('../models/scores')
 async function index(req,res) {
     try{ console.log("Controller called")
         const scoreEntry = await Score.all;
-        console.log("This is a test", scoreEntry);
+        //console.log("This is a test", scoreEntry);
         res.status(200).json(scoreEntry);
     } catch(err){
         res.status(500).send(err);
