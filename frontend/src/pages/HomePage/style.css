@@ -25,13 +25,11 @@
     font-style: var(--content-text);
     background-image: url('../../images/home-desktop.jpg');
     background-size: 100% 100%;
-    background-repeat: no-repeat;
+    background-repeat: repeat-y;
     height: 100vh;
-    text-align: center;
 }
 
 #welcome h1 {
-
     font-size: 5rem;
     font-weight: 200;
     font-style: italic;
@@ -57,43 +55,13 @@ h1:focus {
     outline: none;
 }
 
-/* Animate neon flicker */
-@keyframes flicker {
-
-    0%,
-    19%,
-    21%,
-    23%,
-    25%,
-    54%,
-    56%,
-    100% {
-
-        text-shadow:
-            -0.2rem -0.2rem 1rem #fff,
-            0.2rem 0.2rem 1rem #fff,
-            0 0 2rem var(--neon-text-color),
-            0 0 4rem var(--neon-text-color),
-            0 0 6rem var(--neon-text-color),
-            0 0 8rem var(--neon-text-color),
-            0 0 10rem var(--neon-text-color);
-
-        box-shadow:
-            0 0 .5rem #fff,
-            inset 0 0 .5rem #fff,
-            0 0 2rem var(--neon-border-color),
-            inset 0 0 2rem var(--neon-border-color),
-            0 0 4rem var(--neon-border-color),
-            inset 0 0 4rem var(--neon-border-color);
-    }
-
-    20%,
-    24%,
-    55% {
-        text-shadow: none;
-        box-shadow: none;
-    }
+#welcome .buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
 }
+
+
 
 #welcome img {
     height: 420px;
@@ -105,10 +73,9 @@ h1:focus {
 #welcome form {
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     width: 30%;
-    text-align: center;
     background: transparent;
 }
 
@@ -166,13 +133,13 @@ button.newQuiz:hover {
     -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
 }
 
-button.newQuiz:nth-child(1) {
+/* button.newQuiz:nth-child(1) {
     filter: hue-rotate(270deg);
-}
+} */
 
-button.newQuiz:nth-child(2) {
+/* button.newQuiz:nth-child(2) {
     filter: hue-rotate(110deg);
-}
+} */
 
 button.newQuiz span {
     position: absolute;
@@ -278,7 +245,7 @@ button.newQuiz span:nth-child(4) {
         transition: 0.5s;
         letter-spacing: 4px;
         overflow: hidden;
-        margin-right: 50px;
+        /* margin-right: 50px; */
         font-family: 'Raleway', sans-serif;
         font-weight: bolder;
     }
@@ -293,14 +260,14 @@ button.newQuiz span:nth-child(4) {
         -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
     }
     
-    button#join:nth-child(1) {
+    /* button#join:nth-child(1) {
         filter: hue-rotate(270deg);
     }
     
     button#join:nth-child(2) {
         filter: hue-rotate(110deg);
     }
-    
+     */
     button#join span {
         position: absolute;
         display: block;
@@ -412,7 +379,8 @@ button.newQuiz span:nth-child(4) {
 }
 
 #leaderboardIcon {
-    margin-right: 85% !important;
+    /* margin-right: 85% !important; */
+    padding-top: 15px;
     font-size: 1rem;
     text-shadow:
         0 0 500px #fff,
@@ -428,6 +396,7 @@ button.newQuiz span:nth-child(4) {
 .iconT {
     padding-left: 10px;
     color: #0ff;
+
 }
 
 
@@ -448,10 +417,11 @@ button.newQuiz span:nth-child(4) {
 
 /* RESPONSIVE - MOBILE */
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 550px) {
     #welcome {
         background-image: url('../../images/home-mobile.jpg');
-        background-size: 100vw 100vh;
+        background-size: 100% 100%;
+        background-repeat:repeat-y;
     }
 
     #welcome img {
@@ -474,5 +444,11 @@ button.newQuiz span:nth-child(4) {
 
     #welcome p {
         font-size: 0.9rem;
+    }
+
+    button#join,
+     button.newQuiz{
+        padding: 5px 15px;
+        margin: 2px;
     }
 }

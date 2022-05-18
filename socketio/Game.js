@@ -22,7 +22,8 @@ class Games {
         
                 // let game = new Game(hostID, roomName, difficulty, count, subject);
                 this.games.push(game);
-                // this.games.forEach(room => console.log(room))
+   
+                this.games.forEach(room => console.log(room))
                 return game;
     }
         

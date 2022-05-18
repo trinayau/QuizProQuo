@@ -163,14 +163,15 @@ button#play-button span:nth-child(4) {
 
 
 #game-heading {
-    margin-bottom: 20%;
-    border-radius: 10px;
-    background-color: #ea62cc;
-    box-shadow: 0 0 100px #F250CF,
-        0 0 10px #F250CFcc,
-        0 0 15px #ff8fc5b3,
-        0 0 30px #ff8fc599;
-    border-color: #ff8fc5;
+    font-size: 3rem;
+    font-weight: 200;
+    font-style: italic;
+    color: #fff;
+    padding: 1.8rem 1.8rem 2rem;
+    border: 0.4rem solid #fff;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    animation: flicker 1.5s infinite alternate;
 }
 
 #backBtn {

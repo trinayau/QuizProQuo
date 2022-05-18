@@ -18,9 +18,9 @@ const Questions = (props) => {
   return (
     <div role="question-container" id="question-container">
       <h3 style={{ color: "white" }}>
-        <span id="question-num">
-          Question {questionNumber} of {questionLength}:
-        </span>
+        <div id="question-num">
+          Question {questionNumber}
+        </div>
         <br></br>
         {decodedQuestion}
       </h3>

@@ -24,6 +24,7 @@ let users = [];
 //Connected socket
 io.on("connection", (socket) => {
 
+
 socket.emit('assign-id', { id: socket.id});
 
 socket.on("join server", (username) => {

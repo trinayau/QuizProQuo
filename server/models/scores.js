@@ -28,7 +28,6 @@ class Score {
         })
     };
 
-
     //Writing a score to the database
         static create(newScoreEntry) {
             return new Promise (async (res, rej) => {
