@@ -134,7 +134,7 @@ const LobbyStatus = ({host}) => {
 
     if (usertype === "HOST"){
         return (
-            <button id="start-game" onClick={handleClick}>Start Game</button> 
+            <button id="start-game" onClick={handleClick}>Start</button> 
             // onclick fetch questions and go to quiz page
         )
 

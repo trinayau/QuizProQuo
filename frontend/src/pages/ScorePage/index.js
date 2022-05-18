@@ -57,19 +57,35 @@ const ScorePage = () => {
   //           results,
   //           options
   //         );
+  const sendResults = () => {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const options = {
+          headers: { "Content-Type": "application/json" },
+        };
+        const results = {
+          player: username,
+          score: percentage,
+        };
 
-  //         if (data.err) {
-  //           throw Error(data.err);
-  //         }
-  //         resolve("Scores sent to leaderboard!");
-  //       } catch (err) {
-  //         reject(`Can't send results: ${err}`);
-  //       }
-  //     });
-  //   };
-  //   useEffect(() => {
-  //     sendResults();
-  //   }, [score]);
+        const { data } = await axios.post(
+          `http://localhost:3001/scoreboard`,
+          results,
+          options
+        );
+
+        if (data.err) {
+          throw Error(data.err);
+        }
+        resolve("Scores sent to leaderboard!");
+      } catch (err) {
+        reject(`Can't send results: ${err}`);
+      }
+    });
+  };
+  useEffect(() => {
+    sendResults();
+  }, [score]);
 
   let highest = 0;
   const winnerIs = (player, score) => {
