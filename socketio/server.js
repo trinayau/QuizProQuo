@@ -69,6 +69,10 @@ socket.on("join server", (username) => {
         message: `SUCCESS: configuration has been added`
     }); 
 })
+socket.on('game-start', (roomName) => {
+  console.log("game started")
+    io.to(roomName).emit('game-start', true)
+});
 
 socket.on('join-room', (config, cb) => {
   //check room
@@ -118,6 +122,7 @@ socket.on('game-players', (roomName, cb) => {
     )
 
 })
+io.to(roomNameVar).emit('game-players');
 
     socket.on('game-start', (roomName) => {
         console.log("game started")
@@ -127,7 +132,13 @@ socket.on('game-players', (roomName, cb) => {
         // )
         io.to(roomName).emit('game-start', true)
     });
-    
+  
+    socket.on('get-questions', (roomName, cb) => {
+      const data = games.getGame(roomName)
+      cb(data)
+    })
+
+
 //Sends scores
   socket.on('score',  (config, cb) => {
   console.log("SCORE TALLY")
