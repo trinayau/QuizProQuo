@@ -31,7 +31,7 @@ const LobbyStatus = ({host}) => {
         // })
         socket.emit('get-questions', room, (res) => {
             console.log(res)
-            setSubject(res.subjects);
+            setSubject(res.subject);
             setDifficulty(res.difficulty);
             setNo(res.count)
         })
