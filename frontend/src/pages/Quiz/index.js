@@ -8,7 +8,6 @@ const Quiz = () => {
     (state) => state.quizReducer.current_question_index
   );
   const result = useSelector((state) => state.quizReducer.results);
-  console.log(result)
   const index = result.indexOf(result[currentQuestion]);
   const question = result[currentQuestion].question;
   const answer = result[currentQuestion].answers;
