@@ -97,7 +97,7 @@ socket.on('join-room', (config, cb) => {
               code: "success",
               player: config.username, 
               score: 0 
-          });
+          })
 
           io.to(game.host).emit("player-connected", { 
               name: config.username, 
@@ -107,6 +107,11 @@ socket.on('join-room', (config, cb) => {
   }
 )
 
+//messages - chatroom
+socket.on("message sent", ({ nicknameChosen, message, room }) => {
+  io.emit("receive message", nicknameChosen, message);
+  console.log('message received:', 'nickname:',nicknameChosen, 'message:',message, 'room:',room)
+});
 
 let gamePlayers; 
 let roomNameVar; 
@@ -121,14 +126,12 @@ socket.on('game-players', (roomName, cb) => {
     )
 
 })
+
+
 io.to(roomNameVar).emit('game-players');
 
     socket.on('game-start', (roomName) => {
         console.log("game started")
-
-        // cb(
-        //     {response: true}
-        // )
         io.to(roomName).emit('game-start', true)
     });
   

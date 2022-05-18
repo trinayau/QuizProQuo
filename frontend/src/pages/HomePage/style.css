@@ -25,8 +25,8 @@
     font-style: var(--content-text);
     background-image: url('../../images/bricks.jpeg');
     background-size: 100% 100%;
-    background-repeat: repeat-y;
-    height: 100vh;
+    background-repeat:repeat;
+    /* height: 100vh; */
 }
 
 #welcome h1 {

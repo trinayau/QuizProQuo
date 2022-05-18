@@ -130,8 +130,6 @@ const LobbyStatus = ({host}) => {
                
        }
 
-
-
     if (usertype === "HOST"){
         return (
             <button id="start-game" onClick={handleClick}>Start</button> 
