@@ -1,10 +1,12 @@
 import "./style.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import {socket} from '../../socket/index.js';
-import { useSelector, useDispatch } from 'react-redux'
-import {roomConfig} from "../../actions/roomConfig"
+import { socket } from "../../socket/index.js";
+import { useSelector, useDispatch } from "react-redux";
+import { roomConfig } from "../../actions/roomConfig";
 import { fetchQuiz } from "../../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft } from "@fortawesome/fontawesome-free-solid";
 
 const Form = () => {
   const [difficulty, setDifficulty] = useState("easy");
@@ -12,9 +14,9 @@ const Form = () => {
   const [subject, setSubject] = useState(9);
   const [categoryList, setCategoryList] = useState({});
 
-  const roomName = useSelector(state => state.user.room);
-  const id = useSelector(state => state.user.id);
-  const username = useSelector(state => state.user.user.username);
+  const roomName = useSelector((state) => state.user.room);
+  const id = useSelector((state) => state.user.id);
+  const username = useSelector((state) => state.user.user.username);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ const Form = () => {
       setCategoryList((prevState) => ({ ...prevState, [data.id]: data.name }));
     });
   };
- //fetches categories once when page loads
+  //fetches categories once when page loads
   useEffect(() => {
     fetchCategories();
   }, []);
@@ -50,7 +52,7 @@ const Form = () => {
   };
 
   const handleChangeSubject = (e) => {
-    setSubject(e.target.value)
+    setSubject(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -58,31 +60,38 @@ const Form = () => {
 
     dispatch(fetchQuiz(numberOfQs, subject, difficulty));
 
-    const config =  {
+    const config = {
       host: id,
-      room: roomName, 
-      difficulty: difficulty, 
+      room: roomName,
+      difficulty: difficulty,
       count: numberOfQs,
       subject: subject,
-      username: username
-    }
+      username: username,
+    };
     //sends to redux store
-    dispatch(roomConfig(numberOfQs,subject,difficulty));
-    
+    dispatch(roomConfig(numberOfQs, subject, difficulty));
+
     //sends to socket server which creates a room
     socket.emit("add-config", config, (res) => {
-      console.log(res)
+      console.log(res);
     });
 
     navigate("/waitingroom");
   };
 
+  const backBtn = () => {
+    navigate(-1);
+  };
+
   return (
     <>
+      <button id="backBtn" onClick={backBtn}>
+        <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> BACK
+      </button>
       <form aria-label="game-selection" onSubmit={handleSubmit}>
         <h1 id="game-heading"> GAME SETUP </h1>
+        <p> PICK A CATEGORY </p>
         <label htmlFor="pick a category">
-          Pick a category:
           <select
             onChange={handleChangeSubject}
             aria-label="category"
@@ -94,8 +103,8 @@ const Form = () => {
           </select>
         </label>
         <br />
+        <p> NUMBER OF QUESTIONS </p>
         <label htmlFor="number of questionss">
-          Number of questions:
           <input
             value={numberOfQs}
             name="numberOfQs"
@@ -107,8 +116,8 @@ const Form = () => {
           />
         </label>
         <br />
+        <p> DIFFICULTY </p>
         <label htmlFor="difficulty">
-          Difficulty:
           <select
             name="difficulty"
             onChange={handleChangeDifficulty}
@@ -121,7 +130,18 @@ const Form = () => {
           </select>
         </label>
         <br />
-        <input onClick={handleSubmit} type="submit" value="PLAY" id="play-button" />
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          value="PLAY"
+          id="play-button"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          PLAY
+        </button>
       </form>
     </>
   );
