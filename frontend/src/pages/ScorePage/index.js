@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./style.css";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { socket } from "../../socket/index.js";
 import { ScoreResults } from "../../components";
 
 const ScorePage = () => {
+  const navigate = useNavigate();
   const username = useSelector((state) => state.user.user.username);
   const score = useSelector((state) => state.quizReducer.score); //get score from state
   const results = useSelector((state) => state.quizReducer.results);
@@ -15,7 +16,7 @@ const ScorePage = () => {
   const [players, setPlayers] = useState("");
   const room = useSelector((state) => state.user.room);
   const [winner, setWinner] = useState("");
-  const [updatePlayer, setUpdatePlayer] = useState(false)
+  const [updatePlayer, setUpdatePlayer] = useState(false);
 
   useEffect(() => {
     let config = {
@@ -25,12 +26,14 @@ const ScorePage = () => {
     };
 
     socket.emit("score", config, (res) => {
-      console.log(res, 'res')
+      console.log(res, "res");
       // const scoresArr = res.scores.map((el) => el.score);
       // const userArr = res.scores.map((el) => el.username);
-      const scoreArray = res.scores.map((player) => {return {username: player.username, score: player.score}});
-      console.log(scoreArray, 'scoreArray')
-      setAllScores(scoreArray)
+      const scoreArray = res.scores.map((player) => {
+        return { username: player.username, score: player.score };
+      });
+      console.log(scoreArray, "scoreArray");
+      setAllScores(scoreArray);
     });
 
     // socket.on("update score", res => {
@@ -38,8 +41,22 @@ const ScorePage = () => {
     // })
   }, [updatePlayer]);
 
-
-
+  //   const sendResults = () => {
+  //     return new Promise(async (resolve, reject) => {
+  //       try {
+  //         const options = {
+  //           headers: { "Content-Type": "application/json" },
+  //         };
+  //         const results = {
+  //           player: username,
+  //           score: percentage,
+  //         };
+  //         console.log(results);
+  //         const { data } = await axios.post(
+  //           `https://localhost:3001/users`,
+  //           results,
+  //           options
+  //         );
   const sendResults = () => {
     return new Promise(async (resolve, reject) => {
       try {
@@ -80,12 +97,15 @@ const ScorePage = () => {
         highest = score;
         str = "WINNER!";
       } else {
-        str = "LOSER (lol)"
+        str = "LOSER (lol)";
       }
     }
     return str;
   };
 
+  const toLeaderboard = () => {
+    navigate("/leaderboard");
+  };
   return (
     <div id="score-page">
       <div id="playerscore">
@@ -93,8 +113,8 @@ const ScorePage = () => {
 
         <div className="score-banner">
           <div className="wrapper">
-            <h3>player</h3>
-            <h3>score</h3>
+            {/* <h3>player</h3>
+            <h3>score</h3> */}
           </div>
 
           {allScores &&
@@ -108,9 +128,12 @@ const ScorePage = () => {
               />
             ))}
         </div>
-        <Link to="/leaderboard">
-          <button>Go to Leaderboard</button>
-        </Link>
+        <button onClick={toLeaderboard} id="toLeaderbrd">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>Go to Leaderboard
+        </button>
       </div>
     </div>
   );
