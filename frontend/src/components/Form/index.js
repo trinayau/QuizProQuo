@@ -5,6 +5,8 @@ import { socket } from "../../socket/index.js";
 import { useSelector, useDispatch } from "react-redux";
 import { roomConfig } from "../../actions/roomConfig";
 import { fetchQuiz } from "../../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleLeft } from "@fortawesome/fontawesome-free-solid";
 
 const Form = () => {
   const [difficulty, setDifficulty] = useState("easy");
@@ -77,12 +79,19 @@ const Form = () => {
     navigate("/waitingroom");
   };
 
+  const backBtn = () => {
+    navigate(-1);
+  };
+
   return (
     <>
+      <button id="backBtn" onClick={backBtn}>
+        <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> BACK
+      </button>
       <form aria-label="game-selection" onSubmit={handleSubmit}>
         <h1 id="game-heading"> GAME SETUP </h1>
+        <p> PICK A CATEGORY </p>
         <label htmlFor="pick a category">
-          Pick a category:
           <select
             onChange={handleChangeSubject}
             aria-label="category"
@@ -94,8 +103,8 @@ const Form = () => {
           </select>
         </label>
         <br />
+        <p> NUMBER OF QUESTIONS </p>
         <label htmlFor="number of questionss">
-          Number of questions:
           <input
             value={numberOfQs}
             name="numberOfQs"
@@ -107,8 +116,8 @@ const Form = () => {
           />
         </label>
         <br />
+        <p> DIFFICULTY </p>
         <label htmlFor="difficulty">
-          Difficulty:
           <select
             name="difficulty"
             onChange={handleChangeDifficulty}
