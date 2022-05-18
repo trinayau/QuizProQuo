@@ -11,11 +11,11 @@
   }
 
   #leaderboard h2{
-    font-size: 2rem;
+    font-size: 5rem;
     font-weight: 200;
     font-style: italic;
     color: #fff;
-    padding: 4rem 4rem 4rem;
+    padding: 4rem 6rem 5.5rem;
     border: 0.4rem solid #fff;
     border-radius: 2rem;
     text-transform: uppercase;
@@ -25,6 +25,11 @@
   @media screen and (max-width: 450px) {
     #leaderboard {
         background-image: url('../../images/home-mobile.jpg');
+    }
+
+    #leaderboard h2{
+      font-size: 2rem;
+      padding: 2.5rem 4rem 2.5rem;
     }
   }
   

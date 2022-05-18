@@ -1,16 +1,64 @@
-#start-game, #play-now{
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&family=Work+Sans&display=swap');
+
+/* #start-game, #play-now{
   padding: 0.5rem 1rem;
   background-color: whitesmoke;
   border-radius: 0.5rem;
   color: #c84754;
   font-size: 1.1rem;
+} */
+
+
+
+#start-game, #play-now {
+  position: relative;
+    cursor: pointer;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    background: transparent;
+    border: 2px solid #ffe4f3;
+    border-radius: 1rem;
+    color: #ffeff7;
+
+    -webkit-box-shadow: 0px 0px 44px 1px rgba(248, 74, 167, 1), 0px 0px 20px 1px rgba(248, 74, 167, 1);
+    -moz-box-shadow: 0px 0px 44px 1px rgba(248, 74, 167, 1), 0px 0px 20px 1px rgba(248, 74, 167, 1);
+    box-shadow: inset 0px 0px 20px 1px rgba(248, 74, 167, 1), 0px 0px 20px 1px rgba(248, 74, 167, 1);
+    text-shadow: 0 0 0.125em rgba(248, 74, 167, 1);
 }
 
+button:hover {
+    transition: 0.2s;
+    transform: scale(1.1);
+    background-color: #f84aa7;
+    border: 0;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #f84aa7;
+    border-radius: 1rem;
+    filter: blur(2em);
+    opacity: 0;
+    transition: opacity linear 0.1s;
+    z-index: -1;
+}
+
+button:hover::after {
+    opacity: 1;
+}
+/* 
 #start-game:hover, #play-now:hover {
   background-color: #c84754;
   color: whitesmoke;
   transition-duration: 0.3s;
-}
+} */
 
 
 @media screen and (max-width: 450px) {
