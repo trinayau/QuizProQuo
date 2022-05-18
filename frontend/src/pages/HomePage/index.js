@@ -169,6 +169,7 @@ const HomePage = () => {
           onChange={handleRoomInput}
         />
 
+        <div className="button-container" style={{display:"flex", justifyContent:"center"}}>
         <button
           type="submit"
           name="newQuiz"
@@ -184,8 +185,8 @@ const HomePage = () => {
         </button>
 
         {renderJoin()}
+        </div>
       </form>
-
       {/* Shows number of clients online */}
       <div>
         {playerCount <= 0

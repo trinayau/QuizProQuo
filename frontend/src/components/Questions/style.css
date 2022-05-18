@@ -27,6 +27,18 @@ h3 {
         0 0 15px #ff8fc5b3,
         0 0 30px #ff8fc599;
     border-color: #ff8fc5;
+}
+
+#question-num {
+    font-size: 1.2rem;
+    font-weight: 200;
+    font-style: italic;
+    color: #fff;
+    padding: 2rem 3rem 2rem;
+    border: 0.2rem solid #fff;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    animation: flicker 1.5s infinite alternate;
     font-size: 45px;
 }
 

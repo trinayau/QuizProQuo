@@ -8,6 +8,19 @@
     align-items: center;
     text-align: center;
   }
+
+  #playerscore h2 {
+    font-size: 4.5rem;
+    font-weight: 200;
+    font-style: italic;
+    color: #fff;
+    padding: 2rem 0.1rem 2rem 0.1rem;
+    border: 0.4rem solid #fff;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    animation: flicker 1.5s infinite alternate;
+    margin: 20px;
+  }
   
   @media screen and (max-width: 450px) {
     #score-page {
