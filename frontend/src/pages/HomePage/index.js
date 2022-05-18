@@ -14,7 +14,7 @@ const HomePage = () => {
   const navigate = useNavigate();
   //no of users online, default is 0
   const [playerCount, setPlayerCount] = useState(0);
-  const [error, setError] = useState("");
+  const [error, setError] = useState(undefined);
   //username form
   const [usrInput, setUsrInput] = useState(undefined);
   const [username, setUsername] = useState("");
@@ -28,6 +28,10 @@ const HomePage = () => {
     socket.on('new user', allUsers=>{setAllUsers(allUsers)});
   }, []);
 
+  socket.on('no room', msg => {
+    setError(msg)
+  })
+
   useEffect(()=> {
 
     socket.on('assign-id', id => dispatch(setID(id)))
@@ -35,16 +39,16 @@ const HomePage = () => {
     socket.emit('join server', username);
   },[username])
 
-  const renderUser = (user) => {
+  const renderUser = (user, i) => {
     return (
-      <p key={user.id}>
+      <p key={i}>
         {user.username}
       </p>
     )
   }
 
   const handleInput = (e) => {
-    setError("");
+    setError(undefined);
     setUsrInput(e.target.value);
   };
 
@@ -77,6 +81,7 @@ const HomePage = () => {
 
   const handleJoin = (e) => {
     e.preventDefault();
+    setError("")
     const player = usrInput;
     setUsername(player);
     if (player === undefined) {
@@ -86,16 +91,12 @@ const HomePage = () => {
     } else {
         const config = {
             room: room,
-            username: player
+            username: player,
+            id: socket.id
         }
         socket.emit("join-room", config, (res) => {
-
-            console.log("socket response", res);
-
             if (res.code === "success") {
                 setRoom(room);
-
-
                 dispatch(setPlayer(player, room));
                 navigate("/waitingroom");
             } else {
@@ -135,7 +136,8 @@ const HomePage = () => {
 
   return (
     <div id="welcome">
-      <img src={Logo} alt="Quiz Pro Quo logo" />
+      {/* <img src={Logo} alt="Quiz Pro Quo logo" /> */}
+      <h1>Quiz Pro Quo</h1>
       <form>
       <label htmlFor="username">Username</label>
         <input
@@ -168,15 +170,15 @@ const HomePage = () => {
       </form>
 
       {/* Shows number of clients online */}
-      <p>
+      <div>
         {playerCount <= 0
           ? "No Quizzers Online"
           : `Quizzers Online: ${playerCount}`}
-        {error && <div className="error">{error}</div>}
-      </p>
-      <p>
+        {error && <p className="error">{error}</p>}
+      </div>
+      <div>
         {allUsers.length <= 0 ? "No Quizzers Online :(" : `Quizzers Online: ${playerCount}` && allUsers.map(renderUser)}
-      </p>
+      </div>
     </div>
   );
 };

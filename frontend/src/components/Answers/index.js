@@ -1,38 +1,64 @@
-import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeQuestion, endQuestions } from "../../actions";
 import "./style.css";
 const Answers = (props) => {
   const nextQuestion = (answer) => dispatch(changeQuestion(answer));
-  const endQuestions = (finalAnswer) => dispatch(endQuestions(finalAnswer));
+  const endQuestion = (finalAnswer) => dispatch(endQuestions(finalAnswer));
   const results = useSelector((state) => state.quizReducer.results);
   const quizLength = results.length;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleQuestions = (question) => {
-    return decodeURIComponent(question);
+  //handles the % and & in answers returned from opentrivia db
+  const handleAnswers = (answer) => {
+    const decodedAnswer = answer.map(a => {return decodeURIComponent(a)})
+    return decodedAnswer
   };
 
-  let answers = handleQuestions(props.answers);
+  let answers = handleAnswers(props.answer);
+
 
   const finalAnswer = async () => {
-    endQuestions(props.answer);
-    navigate("./score");
+    endQuestion(props.answer);
+    navigate("/score");
   };
 
   if (props.index === quizLength - 1) {
     return (
-      <button role="button"  id="cards" onClick={finalAnswer}>
-        {answers}
-      </button>
+      // <button role="button"  id="cards" onClick={finalAnswer}>
+      //   {answers}
+      // </button>
+      <div className="options">
+          {answers &&
+            answers.map((i) => (
+              <button
+              id="cards"
+                key={i}
+                onClick={() => finalAnswer(i)}
+              >
+                {i}
+              </button>
+            ))}
+        </div>
     );
   } else {
     return (
-      <button role="button" id="cards" onClick={() => nextQuestion(props.answer)}>
-        {answers}
-      </button>
+      // <button role="button" id="cards" onClick={() => nextQuestion(props.answer)}>
+      //   {answers}
+      // </button>
+      <div className="options">
+          {answers &&
+            answers.map((i) => (
+              <button
+              id="cards"
+                key={i}
+                onClick={() => nextQuestion(i)}
+              >
+                {i}
+              </button>
+            ))}
+        </div>
     );
   }
 };

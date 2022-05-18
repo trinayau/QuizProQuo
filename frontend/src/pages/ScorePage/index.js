@@ -30,9 +30,7 @@ const ScorePage = () => {
       setAllScores(scoresArr);
       setPlayers(userArr);
     });
-  }, [allScores]);
-
-  console.log(allScores);
+  }, []);
 
 //   const getPlayers = () => {
 //     //TODO: extract from redux room name and store to roomName
@@ -74,11 +72,9 @@ const ScorePage = () => {
   let highest = 0;
   const winnerIs = (player, score) => {
     let str;
-
     if (players.length <= 1) {
       str = "👑";
     } else if (player.length > 1) {
-      //multiplayer
       if (highest <= score) {
         highest = score;
         str = "👑";

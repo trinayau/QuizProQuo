@@ -46,9 +46,11 @@ class Games {
         }
     }
 
-    getPLayersForGame(roomName) {
+    getPlayersForGame(roomName) {
 
         //get all players
+        const game = this.games.filter(game => game.room === roomName);
+        console.log(game.players)
     }
 
 
@@ -66,7 +68,7 @@ class Games {
     // }
 
     //check the room id
-    //get player with room id
+    //get players with room id
     getPlayerData (roomName) {
         //find room in games
         // console.log("player data")
@@ -87,7 +89,6 @@ class Games {
         // console.log(username)
         try{
             let player = game.players.find(p => p.username === username)
-        
             //and add the score
             player.score = score; 
             //return all player scores for the gamae getPlayerData()
@@ -104,12 +105,24 @@ class Games {
         return game;
 
     }
+
+    canRoomBeJoined(roomName){
+            console.log("Looking for room")
+                const game =  this.games.filter(game => {console.log(game.room === roomName); return game.room === roomName});
+                console.log('game is:', game)
+                if (game.length > 0){
+                    return game;
+                } else {
+                    return 'ERROR'
+                }
+    }
     getGameByRoom(roomName) {
-        console.log("Looking for room")
-        // console.log(roomName)
+        console.log(roomName)
         // if(this.games){
-        // this.games.forEach(game => console.log(game))
+        this.games.forEach(game => console.log(game))
+
         const game =  this.games.filter(game => {console.log(game.room === roomName); return game.room === roomName});
+       
         return game;
     };
 
@@ -122,34 +135,6 @@ class Games {
         };
     };
 }
-
-// class Game {
-//     constructor(hostID, roomName, difficulty, count, subject ){
-//         this.host = hostID,
-//         this.room = roomName,
-//         this.difficulty = difficulty,
-//         this.count = count,
-//         this.subject = subject,
-//         this.players = [],
-//         // currentQuestion: current,
-//         // results: results,
-//         // current_question_index: index,
-//         this.active = false
-//     }
-
-//     addPlayer (player) {
-//         this.players.push(player);
-//         // console.log(players.length)
-//         // console.log("player added")
-//         return player;
-//     }
-
-//     getPlayerCount(roomName) {
-//         // console.log(player.count)
-//         // console.log(this.players.length)
-//         return this.players.length; 
-//     }
-// }
 
 module.exports = {Games};
 

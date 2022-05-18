@@ -31,16 +31,13 @@ const LobbyStatus = ({host}) => {
         // })
         socket.emit('get-questions', room, (res) => {
             console.log(res)
-            setSubject(res.subjects);
+            setSubject(res.subject);
             setDifficulty(res.difficulty);
             setNo(res.count)
         })
         socket.on('game-start', val =>  setReady(val))
         
     }, [ready]);
-
-
-// console.log(ready)
 
     const handleClick = (e) => {
         e.preventDefault();
