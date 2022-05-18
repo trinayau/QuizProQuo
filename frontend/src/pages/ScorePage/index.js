@@ -99,6 +99,7 @@ const ScorePage = () => {
               <ScoreResults
                 className="right"
                 player={player}
+                key={i}
                 text={allScores[i]}
                 winner={winnerIs(player, allScores[i])}
               />

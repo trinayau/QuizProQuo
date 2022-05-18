@@ -88,7 +88,7 @@ socket.on('join-room', (config, cb) => {
           games.addPlayer(config.username, config.room, socket.id);
           socket.join(config.room);
           socket.emit(`${config.username} has joined the room`);
-          socket.emit('new peon', config.username)
+          io.in(config.room).emit('new peon', config.username)
           let game = games.getGameByRoom(config.room);
 
           cb({
