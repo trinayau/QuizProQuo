@@ -16,7 +16,7 @@ const ScorePage = () => {
   const [players, setPlayers] = useState("");
   const room = useSelector((state) => state.user.room);
   const [winner, setWinner] = useState("");
-  const [updatePlayer, setUpdatePlayer] = useState(false);
+  const [loser, setLoser] = useState(false)
 
   useEffect(() => {
     let config = {
@@ -27,8 +27,6 @@ const ScorePage = () => {
 
     socket.emit("score", config, (res) => {
       console.log(res, "res");
-      // const scoresArr = res.scores.map((el) => el.score);
-      // const userArr = res.scores.map((el) => el.username);
       const scoreArray = res.scores.map((player) => {
         return { username: player.username, score: player.score };
       });
@@ -38,6 +36,7 @@ const ScorePage = () => {
 
   }, []);
 
+  //posts results to server
   const sendResults = (w) => {
     return new Promise(async (resolve, reject) => {
       try {
@@ -66,8 +65,11 @@ const ScorePage = () => {
   };
 
   useEffect(() => {
-    sendResults();
-    console.log('Sending results from score page')
+    if(score > 0) {
+      sendResults();
+    } else{
+      setLoser(true)
+    }
   }, []);
 
   let highest = 0;
@@ -91,11 +93,16 @@ const ScorePage = () => {
   const toLeaderboard = () => {
     navigate("/leaderboard");
   };
+
+  const toHome = () => {
+    navigate("/");
+  };
   return (
     <div id="score-page">
       <div id="playerscore">
         <h2>You scored: {percentage}% </h2>
-
+        {loser ? <p>You need to get good nub, why don't you try again?</p> : <p>Wow, you actually scored some points! You've been posted to the leaderboard</p>}
+{/* commented out because it's not currently working. todo */}
         <div className="score-banner">
           <div className="wrapper">
             {/* <h3>player</h3>
@@ -113,12 +120,17 @@ const ScorePage = () => {
               />
             ))} */}
         </div>
-        <button onClick={toLeaderboard} id="toLeaderbrd">
+        {loser ?  <button onClick={toHome} id="toLeaderbrd"><span></span>
           <span></span>
+          <span></span>
+          <span></span>Try Again
+        </button>
+        : 
+        <button onClick={toLeaderboard} id="toLeaderbrd"><span></span>
           <span></span>
           <span></span>
           <span></span>Go to Leaderboard
-        </button>
+        </button>}
       </div>
     </div>
   );

@@ -62,9 +62,8 @@ const Lobby = () => {
       const messageList = message.map((message, i) => {
         return (
           <div key={i}>
-            <li className={message.me ? "my-message" : ""}>
-              <b>{message.username ? message.username : 'You'}</b>: {message.message}
-              {console.log(message.username, 'username')}
+            <li className={message.me ? "my-message" : null}>
+                <b>{message.username ? message.username : 'You'}</b>: {message.message}   
             </li>
           </div>
         );
