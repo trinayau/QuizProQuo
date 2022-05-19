@@ -1,12 +1,22 @@
 import { default as Form } from ".";
-import { screen } from "@testing-library/react";
+import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { Provider } from "react-redux";
+import store from "../../store";
+import { MemoryRouter as Router} from "react-router-dom";
+
 describe("Form", () => {
   let getResultMock;
 
   beforeEach(() => {
     getResultMock = jest.fn();
-    render(<Form getResult={getResultMock} />);
+    render(
+      <Router>
+        <Provider store={store}>
+          <Form getResult={getResultMock} />{" "}
+        </Provider>
+      </Router>
+    );
   });
 
   test("it renders a form", () => {

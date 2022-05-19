@@ -1,16 +1,29 @@
 import { default as Questions } from ".";
 import { screen, render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../store";
+import { MemoryRouter as Router } from "react-router-dom";
 
 describe("Questions", () => {
+  let getResultMock;
+
+  beforeEach(() => {
+    getResultMock = jest.fn();
+    render(
+      <Router>
+        <Provider store={store}>
+          <Questions getResult={getResultMock} />
+        </Provider>
+      </Router>
+    );
+  });
   test("it renders a question header", () => {
-    render(<Questions />);
-    let heading = screen.getByRole("heading");
+    const heading = screen.getByRole("question-container");
     expect(heading).toBeInTheDocument();
   });
 
   test("it renders a div", () => {
-    render(<Questions />);
-    const div = screen.getByRole("quizCard");
+    const div = screen.getByLabel("question-render");
     expect(div).toBeInTheDocument();
   });
 });

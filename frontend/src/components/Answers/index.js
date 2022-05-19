@@ -36,10 +36,10 @@ const Answers = (props) => {
       // <button role="button"  id="cards" onClick={finalAnswer}>
       //   {answers}
       // </button>
-      <div className="options">
+      <div role="answer-button" className="options">
         {answers &&
           answers.map((i) => (
-            <button id="cards" key={i} onClick={() => finalAnswer(i)}>
+            <button role="button" id="cards" key={i} onClick={() => finalAnswer(i)}>
               {i}
             </button>
           ))}
@@ -53,7 +53,7 @@ const Answers = (props) => {
       <div className="options">
         {answers &&
           answers.map((i) => (
-            <button id="cards" key={i} onClick={() => nextQuestion(i)}>
+            <button role="button" id="cards" key={i} onClick={() => nextQuestion(i)}>
               {i}
             </button>
           ))}
