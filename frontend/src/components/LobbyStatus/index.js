@@ -125,7 +125,7 @@ const LobbyStatus = ({host}) => {
                 subjectWord = 'Cartoon & Animations';
                 break;
            default:
-               subjectWord = 'Surprise Me'
+               subjectWord = 'Surprise Me';
                break;
                
        }

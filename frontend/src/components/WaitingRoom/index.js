@@ -51,6 +51,7 @@ const Lobby = () => {
           nicknameChosen: username,
           message,
           room: room
+          
         });
         setMessage((prevState) => [
           { nickname: username, message: message, me: true },
@@ -66,6 +67,7 @@ const Lobby = () => {
               <b>{message.username ? message.username : 'You'}</b>: {message.message}
               {console.log(message.username, 'username')}
             </li>
+            
           </div>
         );
       });

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Questions, Answers } from "../../components";
 import { useSelector } from "react-redux";
@@ -11,10 +11,29 @@ const Quiz = () => {
   const index = result.indexOf(result[currentQuestion]);
   const question = result[currentQuestion].question;
   const answer = result[currentQuestion].answers;
+  const [time, setTime] = useState(15);
+  const [isActive, setIsActive] = useState(true);
+
+  const resetTimer = () => {
+    setIsActive(false);
+  };
+
+  useEffect(() => {
+    let interval = null;
+    if (isActive) {
+      interval = setInterval(() => {
+        setTime((seconds) => seconds - 1);
+      }, 1000);
+    } else if (!isActive) {
+      clearInterval(interval);
+    }
+    return () => clearInterval(interval);
+  }, [isActive, time]);
 
   return (
       <div role="quiz-page" id="quiz-page">
-        <Questions question={question} index={index} />
+        <p id="timer"> {time} seconds left</p>
+        <Questions question={question} index={index} timer={time} reset={resetTimer} />
         <Answers answer={answer} index={index} />
       </div>
   );
