@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import "./style.css";
 
 const ScoreResults = ({ text, player, winner }) => {
   const results = useSelector((state) => state.quizReducer.results);
