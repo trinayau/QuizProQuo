@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import "./style.css";
 import { LeaderBoardTable } from "../../components";
 import { useNavigate } from "react-router-dom";
@@ -39,10 +39,9 @@ function LeaderBoard() {
         className="leaderboard-score"
         role="leaderboard-score"
         key={i}
-        style={{display: "flex"}}
+        style={{ display: "flex" }}
       >
-       
-        <p>{leaderboard.username} </p> 
+        <p>{leaderboard.username} </p>
         <p> {leaderboard.score}</p>
       </div>
     );
@@ -58,6 +57,24 @@ function LeaderBoard() {
       <button id="backBtn" onClick={homeBtn}>
         <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> HOME
       </button>
+      <h2>Leaderboard </h2>
+
+      <div className="leaderboard-container">
+        <div className="sorting-btns">
+          <button onClick={sorting} role="Ascending">
+            ASCENDING
+          </button>
+          <button onClick={sorting} role="Descending">
+            DESCENDING
+          </button>
+        </div>
+        {/* <LeaderBoardTable /> */}
+        <div id="leadBrd-table">
+          <p>NAME</p>
+          <p>SCORE</p>
+        </div>
+        {allLeaderboard}
+      </div>
       <button id="start-again" onClick={handleClick}>
         <span></span>
         <span></span>
@@ -65,25 +82,6 @@ function LeaderBoard() {
         <span></span>
         PLAY AGAIN
       </button>
-      <h2>Leaderboard </h2>
-  
-      <div className="leaderboard-container">
-      
-      <div className="sorting-btns">
-          <button onClick={sorting} role="Ascending">
-            Sort by Ascending
-          </button>
-          <button onClick={sorting} role="Descending">
-            Sort by Descending
-          </button>
-        </div>
-      {/* <LeaderBoardTable /> */}
-      <div style={{display: 'flex', justifyContent: 'space-around', textAlign: 'center'}}>
-      <p>Name</p><p>Score</p>
-      </div>
-      {allLeaderboard}
-
-    </div>
     </div>
   );
 }
