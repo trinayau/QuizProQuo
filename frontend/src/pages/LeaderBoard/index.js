@@ -20,20 +20,36 @@ function LeaderBoard() {
     window.location.reload();
   };
 
+  const sorting = (e) => {
+    const value = e.target.textContent;
+    const sorted = [...leaderboard].sort((a, b) => {
+      if (value === "Sort by Ascending") {
+        return a.score - b.score;
+      } else if (value === "Sort by Descending") {
+        return b.score - a.score;
+      }
+      return a.score;
+    });
+    setLeaderboard(sorted);
+  };
+
   const allLeaderboard = leaderboard.map((leaderboard, i) => {
     return (
       <div
         className="leaderboard-score"
         role="leaderboard-score"
         key={i}
+        style={{display: "flex"}}
       >
-        <p>Name: {leaderboard.username}</p>
-        <p>Score: {leaderboard.score}</p>
+        <p>Name: {leaderboard.username} </p> 
+        <p> Score: {leaderboard.score}</p>
       </div>
     );
   });
+
   const homeBtn = () => {
     navigate("/");
+    window.location.reload();
   };
 
   return (
@@ -42,6 +58,14 @@ function LeaderBoard() {
         <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> HOME
       </button>
       <h2>Leaderboard </h2>
+      <div className="sorting-btns">
+          <button onClick={sorting} role="Ascending">
+            Sort by Ascending
+          </button>
+          <button onClick={sorting} role="Descending">
+            Sort by Descending
+          </button>
+        </div>
       {/* <LeaderBoardTable /> */}
       {allLeaderboard}
       <button id="start-again" onClick={handleClick}>
