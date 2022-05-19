@@ -35,7 +35,7 @@
     animation: flicker 1.5s infinite alternate;
   }
 
-  p {
+  .lobby p {
     font-family: var(--content-text);
   }
 

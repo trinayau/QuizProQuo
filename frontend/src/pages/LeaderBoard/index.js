@@ -32,14 +32,14 @@ function LeaderBoard() {
       </div>
     );
   });
-  const backBtn = () => {
-    navigate(-1);
+  const homeBtn = () => {
+    navigate("/");
   };
 
   return (
     <div id="leaderboard">
-      <button id="backBtn" onClick={backBtn}>
-        <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> BACK
+      <button id="backBtn" onClick={homeBtn}>
+        <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> HOME
       </button>
       <h2>Leaderboard </h2>
       {/* <LeaderBoardTable /> */}
