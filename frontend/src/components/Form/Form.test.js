@@ -20,7 +20,7 @@ describe("Form", () => {
   });
 
   test("it renders a form", () => {
-    let form = screen.getByLabel("game-selection");
+    let form = screen.getByLabelText("game-selection");
     expect(form).toBeInTheDocument();
   });
   test("it renders a category dropdown menu", () => {
