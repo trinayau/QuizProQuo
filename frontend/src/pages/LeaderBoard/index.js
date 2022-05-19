@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./style.css";
-import { LeaderBoardTable } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDoubleLeft } from "@fortawesome/fontawesome-free-solid";
@@ -10,7 +9,7 @@ function LeaderBoard() {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/scoreboard")
+    fetch("https://quizpq.herokuapp.com/scoreboard")
       .then((res) => res.json())
       .then((data) => setLeaderboard(data));
   }, []);
@@ -21,11 +20,12 @@ function LeaderBoard() {
   };
 
   const sorting = (e) => {
+    console.log('sorting')
     const value = e.target.textContent;
     const sorted = [...leaderboard].sort((a, b) => {
-      if (value === "Sort by Ascending") {
+      if (value === "ASCENDING") {
         return a.score - b.score;
-      } else if (value === "Sort by Descending") {
+      } else if (value === "DESCENDING") {
         return b.score - a.score;
       }
       return a.score;
@@ -68,7 +68,6 @@ function LeaderBoard() {
             DESCENDING
           </button>
         </div>
-        {/* <LeaderBoardTable /> */}
         <div id="leadBrd-table">
           <p>NAME</p>
           <p>SCORE</p>

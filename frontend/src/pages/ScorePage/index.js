@@ -51,7 +51,7 @@ const ScorePage = () => {
         };
 
         const { data } = await axios.post(
-          `http://localhost:3001/scoreboard`,
+          `https://quizpq.herokuapp.com/scoreboard`,
           results,
           options
         );

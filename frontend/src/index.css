@@ -19,3 +19,19 @@ html{
   height: 100vh;
 
 }
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0,0,0,.3);
+  -webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
+  box-shadow: 0 0 1px rgba(255,255,255,.5);
+}
+
+::-webkit-scrollbar-corner    {
+    background-color: none;
+}
