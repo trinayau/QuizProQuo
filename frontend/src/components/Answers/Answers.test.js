@@ -1,14 +1,25 @@
 import { default as Answers } from ".";
 import { screen, render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import store from "../../store";
+import { MemoryRouter as Router } from "react-router-dom";
 // import userEvent from "@testing-library/user-event";
 // import { MemoryRouter } from "react-router-dom";
-describe("AnswerCard", () => {
+describe("Answers", () => {
+  let getResultMock;
+
   beforeEach(() => {
-    render(<Answers result={resultStub} />);
-    const resultStub = ["Paris", "Madrid", "London", "New York"];
+    getResultMock = jest.fn();
+    render(
+      <Router>
+        <Provider store={store}>
+          <Answers getResult={getResultMock} />
+        </Provider>
+      </Router>
+    );
   });
   test("it renders a button for the answer cards", () => {
-    const button = screen.getByRole("button");
+    const button = screen.getByRole("answer-button");
     expect(button).toBeInTheDocument();
   });
   //   test("it shows the incorrect answer in the results", async () => {

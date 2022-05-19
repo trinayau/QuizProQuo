@@ -78,7 +78,7 @@ const Lobby = () => {
      
 
     return(
-        <div id="Lobby">
+        <div role="lobby" id="Lobby">
             <h2>Lobby</h2>
 
             <LobbyStatus host={host}/> 

@@ -147,7 +147,7 @@ const HomePage = () => {
         LEADERBOARD <FontAwesomeIcon className="iconT" icon={faTrophy} beat />
       </p>
       <h1>Quiz Pro Quo</h1>
-      <form>
+      <form role="form">
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -158,7 +158,7 @@ const HomePage = () => {
           onChange={handleInput}
         />
       </form>
-      <form role="form" autoComplete="off">
+      <form autoComplete="off">
         <label htmlFor="roomName">Room Name</label>
         <input
           type="text"

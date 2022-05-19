@@ -1,17 +1,29 @@
 import { default as WaitingRoom } from ".";
 import { screen, render } from "@testing-library/react";
-import { MemoryRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "../../store";
+import { MemoryRouter as Router } from "react-router-dom";
 
 describe("Waiting Room", () => {
-  test("it renders a question header", () => {
-    render(<WaitingRoom />, { wrapper: MemoryRouter });
-    let button = screen.getByRole("button");
-    expect(button).toBeInTheDocument();
+  let getResultMock;
+
+  beforeEach(() => {
+    getResultMock = jest.fn();
+    render(
+      <Router>
+        <Provider store={store}>
+          <WaitingRoom getResult={getResultMock} />
+        </Provider>
+      </Router>
+    );
+  });
+  test("it renders a role with lobby", () => {
+    const lobby = screen.getByRole("lobby");
+    expect(lobby).toBeInTheDocument();
   });
 
   test("it renders a title with", () => {
-    render(<WaitingRoom />, { wrapper: MemoryRouter });
-    const para = screen.getByContent("Waiting for host to start the game...");
+    const p = screen.getByText("Lobby");
     expect(p).toBeInTheDocument();
   });
 });

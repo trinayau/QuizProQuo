@@ -1,9 +1,9 @@
 import React from "react";
 import { WaitingRoom } from "../../components";
-import "./style.css"
+import "./style.css";
 const Lobby = () => {
   return (
-    <div className="lobby">
+    <div role="Lobby" className="lobby">
       <WaitingRoom />
     </div>
   );

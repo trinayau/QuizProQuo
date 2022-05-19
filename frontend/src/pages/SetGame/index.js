@@ -4,7 +4,7 @@ import { Form } from "../../components";
 
 function SetGame() {
   return (
-    <div id="game-setup">
+    <div role="game-setup" aria-label="game-setup" id="game-setup">
       <Form />
     </div>
   );
