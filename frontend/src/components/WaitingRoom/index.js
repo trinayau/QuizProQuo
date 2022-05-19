@@ -44,7 +44,7 @@ const Lobby = () => {
 
     socket.on('receive message', (nicknameChosen, message)=>{
         console.log('set new message is running')
-        setNewMessage({username: nicknameChosen, message: message})
+        setNewMessage({nickname: nicknameChosen, message: message})
     })
 
 
@@ -85,10 +85,10 @@ const Lobby = () => {
 
             <div className='chatroom'>
           <main id="message-list">
-             {message !==[] && message.map((message, i) => {
+             {message.map((message, i) => {
         return (
           <div key={i}>
-            <li className={message.me ? "my-message" : ""}>
+            <li>
               <b>{message.nickname}</b> : {message.message}
             </li>  
           </div>
