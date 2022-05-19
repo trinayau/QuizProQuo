@@ -22,7 +22,7 @@
   animation: flicker 1.5s infinite alternate;
 }
 
-button#start-again {
+#start-again {
   position: relative;
   cursor: pointer;
   font-family: 'Work Sans', sans-serif;
@@ -41,15 +41,14 @@ button#start-again {
 }
 
 
-
-button#start-again:hover {
+#start-again:hover {
   transition: 0.2s;
   transform: scale(1.1);
   background-color: #f84aa7;
   border: 0;
 }
 
-button#start-again::after {
+#start-again::after {
   content: '';
   position: absolute;
   top: 0;
@@ -64,8 +63,91 @@ button#start-again::after {
   z-index: -1;
 }
 
-button#start-again:hover::after {
+#start-again:hover::after {
   opacity: 1;
+}
+
+[role=Descending] {
+  margin-right: 15px;
+  color: #fff;
+  width: 200px;
+  height: 40px;
+  padding: 10px 5px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bolder;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  display: inline-block;
+  border: 2px solid#0ff;
+  box-shadow: 0 0 5px #0ff, 0 0 5px #0ff;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+[role=Descending]:after {
+  position: absolute;
+  width: 10;
+  height: 100%;
+  background: #0ff;
+  box-shadow:
+    0 0 20px #0ff;
+  transition: all 0.3s ease;
+}
+
+[role=Descending]:hover {
+  color: #fff;
+  background-color: rgba(0, 255, 255, 0.743);
+}
+
+[role=Descending]:hover:after {
+  left: 0;
+  width: 50%;
+}
+
+[role=Descending]:active {
+  top: 20px;
+}
+
+[role=Ascending] {
+  margin-right: 15px;
+  color: #fff;
+  width: 200px;
+  height: 40px;
+  padding: 10px 5px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: bolder;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  display: inline-block;
+  border: 2px solid#ff9aff;
+  box-shadow: 0 0 5px #ff9aff, 0 0 5px #ff9aff;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+[role=Ascending]:after {
+  position: absolute;
+  width: 10;
+  height: 100%;
+  background: #ff9aff;
+  box-shadow:
+    0 0 20px #ff9aff;
+  transition: all 0.3s ease;
+}
+
+[role=Ascending]:hover {
+  color: #fff;
+}
+
+[role=Ascending]:hover:after {
+  left: 0;
+  width: 50%;
+}
+
+[role=Ascending]:active {
+  top: 20px;
 }
 
 #backBtn {
@@ -74,7 +156,7 @@ button#start-again:hover::after {
   border: none;
   position: absolute;
   background: transparent !important;
-  color: rgb(150, 193, 216);
+  color: 0, 193, 216;
   margin-left: 85% !important;
   font-size: 1.5rem;
   text-shadow:
@@ -85,7 +167,7 @@ button#start-again:hover::after {
     0 0 80px #0ff,
     0 0 90px #0ff,
     0 0 100px #0ff,
-    0 0 15px #0ff;
+    sortingTogglepx #0ff;
 }
 
 @media screen and (max-width: 450px) {
