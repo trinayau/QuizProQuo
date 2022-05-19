@@ -41,8 +41,9 @@ function LeaderBoard() {
         key={i}
         style={{display: "flex"}}
       >
-        <p>Name: {leaderboard.username} </p> 
-        <p> Score: {leaderboard.score}</p>
+       
+        <p>{leaderboard.username} </p> 
+        <p> {leaderboard.score}</p>
       </div>
     );
   });
@@ -77,6 +78,9 @@ function LeaderBoard() {
           </button>
         </div>
       {/* <LeaderBoardTable /> */}
+      <div style={{display: 'flex', justifyContent: 'space-around', textAlign: 'center'}}>
+      <p>Name</p><p>Score</p>
+      </div>
       {allLeaderboard}
 
     </div>
