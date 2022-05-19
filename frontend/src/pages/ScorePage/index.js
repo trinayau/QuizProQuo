@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { socket } from "../../socket/index.js";
 import { ScoreResults } from "../../components";
+import teary from "./cryinggif.gif"
+import hacker from "./pixels-neon.gif"
 
 const ScorePage = () => {
   const navigate = useNavigate();
@@ -104,7 +106,7 @@ const ScorePage = () => {
     <div id="score-page">
       <div id="playerscore">
         <h2>You scored: {percentage}% </h2>
-        {loser ? <p>You need to get good nub, why don't you try again?</p> : <p>Wow, you actually scored some points! You've been posted to the leaderboard</p>}
+        {loser ? <><img src={teary} style={{height: "150px",borderRadius: '15px'}}/><p>If you keep practising, you might actually score some points! Or just keep losing (lol)</p></> : <><img src={hacker} style={{height: "150px",borderRadius: '15px'}}/><p>Wow, you actually scored some points! Slow down hacker! You've been posted to the leaderboard so go check it out xoxo</p></>}
 {/* commented out because it's not currently working. todo */}
         <div className="score-banner">
           <div className="wrapper">
