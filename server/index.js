@@ -12,8 +12,12 @@
 const app = require('./server')
 const port = process.env.PORT || 3001;
 const init = require("./db/mongoInit.js");
+const dotenv = require('dotenv');
 
 app.listen(port, () => console.log(`Express now departing from port ${port}!`))
+
+dotenv.config();
+console.log(`Your port is ${process.env.PORT}`)
 
 // server.listen(PORT, () => {
 //     console.log(`Listening on port ${PORT} http://localhost:${PORT}`)

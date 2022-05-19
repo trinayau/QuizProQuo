@@ -1,0 +1,21 @@
+{
+  "name": "quizproquo",
+  "version": "1.0.0",
+  "description": "Lap 3 quiz website built with React, MongoDB, Express and Node.js  Project team consists of:  * [Andrew](https://github.com/akennedy205)  * [Diren](https://github.com/Dnayir)  * [Yusra](https://github.com/yusra-tahir)  * [Trina](https://github.com/trinayau)",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "npm --prefix ./server run start",
+    "start-socket": "npm --prefix ./socketio run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trinayau/QuizProQuo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trinayau/QuizProQuo/issues"
+  },
+  "homepage": "https://github.com/trinayau/QuizProQuo#readme"
+}
