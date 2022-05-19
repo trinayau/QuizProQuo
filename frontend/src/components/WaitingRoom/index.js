@@ -23,6 +23,10 @@ const Lobby = () => {
         
     }, [newPlayer]);
 
+    socket.on('new peon', user => {
+      setNewPlayer(user)
+  })
+
     useEffect(()=>{
         if(newMessage!==""){
         setMessage((prevState) => [
@@ -30,20 +34,13 @@ const Lobby = () => {
             ...prevState,
           ]);
         }
-          console.log('set message is running')
     },[newMessage])
-
     
     useEffect(()=> {
         setPlayers([...players, newPlayer])
     },[newPlayer])
 
-    socket.on('new peon', user => {
-        setNewPlayer(user)
-    })
-
     socket.on('receive message', (nicknameChosen, message)=>{
-        console.log('set new message is running')
         setNewMessage({nickname: nicknameChosen, message: message})
     })
 
@@ -60,7 +57,6 @@ const Lobby = () => {
           { nickname: username, message: message, me: true },
           ...prevState,
         ]);
-        console.log('sendmessage is running')
         e.target.message.value = "";
       };
 

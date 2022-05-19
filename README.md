@@ -23,6 +23,7 @@ Quiz-Pro-Quo is MERN fullstack application.
  To start server and use docker compose for server container,  open terminal and run `bash _scripts/startDev.sh`
  * Starts API and DB services
  * Serves API on `http://localhost:3001`  
+ * It is not possible to fully run our API and DB locally due to hidden process.env variables, feel free to substitute the Mongo URI in with your own!
 
  * To teardown docker compose completely:  
     `bash _scripts/teardown.sh` 
@@ -33,23 +34,24 @@ Quiz-Pro-Quo is MERN fullstack application.
 
 
 ## Technologies:
-- HTML, CSS, Javascript, React
+- Socket.io
+- MongoDB, Express.js, React, Node
 
 ### Dependencies:
  - Server: cors, socket.io, express, MongoDb, Mongo Atlas, Nodemon, Axios, Docker, Redux
 
- - Fontawesome, Redux-dev-tools, Redux thunk
+ - Fontawesome, Redux-dev-tools, Redux-thunk
 
 ### DevDependencies: 
 - Jest, Supertest
-
+- React testing library
 ## Wins & Challenges
 
 ### Wins
 - Successful deployment to Netlify and Heroku
-- App is responsive
+- App is responsive and works in both mobile and desktop
 - Multiplayer waiting lobby and chat-room functioning across multiple devices
- -
+ -Successful implementation of websockets and Redux
 ### Challenges
 - Understanding and implication of sockets
 - Duplicated submissions to leaderboard
@@ -59,3 +61,4 @@ Quiz-Pro-Quo is MERN fullstack application.
  - Sound effects
  - Question countdown timer
  - Random punishment generation for the losers
+ - Displaying scores for all players in the room
