@@ -19,4 +19,3 @@ app.listen(port, () => console.log(`Express now departing from port ${port}!`))
 //     console.log(`Listening on port ${PORT} http://localhost:${PORT}`)
 // })
 
-init();

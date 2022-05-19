@@ -12,7 +12,7 @@ const Lobby = () => {
     const room = useSelector((state) => state.user.room)
     const host = useSelector((state) => state.user.user.type);
     const [message, setMessage] = useState([]);
-    const [newMessage, setNewMessage] = useState({});
+    const [newMessage, setNewMessage] = useState("");
 
     useEffect(() => {  
         socket.emit('game-players', room, (res) => {
@@ -24,23 +24,27 @@ const Lobby = () => {
     }, [newPlayer]);
 
     useEffect(()=>{
+        if(newMessage!==""){
         setMessage((prevState) => [
             newMessage,
             ...prevState,
           ]);
+        }
+          console.log('set message is running')
     },[newMessage])
 
-      socket.on('receive message', (nicknameChosen, message)=>{
-          setNewMessage({username: nicknameChosen, message: message})
-          console.log(newMessage, 'newMessage');
-      })
-
+    
     useEffect(()=> {
         setPlayers([...players, newPlayer])
     },[newPlayer])
 
     socket.on('new peon', user => {
         setNewPlayer(user)
+    })
+
+    socket.on('receive message', (nicknameChosen, message)=>{
+        console.log('set new message is running')
+        setNewMessage({username: nicknameChosen, message: message})
     })
 
 
@@ -56,28 +60,42 @@ const Lobby = () => {
           { nickname: username, message: message, me: true },
           ...prevState,
         ]);
+        console.log('sendmessage is running')
         e.target.message.value = "";
       };
+
       //list of messages
-      const messageList = message.map((message, i) => {
-        return (
-          <div key={i}>
-            <li className={message.me ? "my-message" : ""}>
-              <b>{message.username ? message.username : 'You'}</b>: {message.message}
-              {console.log(message.username, 'username')}
-            </li>
-          </div>
-        );
-      });
+     
+    //   const messageList = message.map((message, i) => {
+    //     return (
+    //       <div key={i}>
+    //         <li className={message.me ? "my-message" : ""}>
+    //           <b>{message.nickname}</b>: {message.message}
+    //         </li>
+    //       </div>
+    //     );
+    //   });
+     
+
     return(
         <div id="Lobby">
             <h2>Lobby</h2>
 
             <LobbyStatus host={host}/> 
+
             <div className='chatroom'>
           <main id="message-list">
-              {messageList}
+             {message !==[] && message.map((message, i) => {
+        return (
+          <div key={i}>
+            <li className={message.me ? "my-message" : ""}>
+              <b>{message.nickname}</b> : {message.message}
+            </li>  
+          </div>
+        );
+      })}
           </main>
+
           <form id="message-form" 
           onSubmit={sendMessage} 
           role="sendMessage">
