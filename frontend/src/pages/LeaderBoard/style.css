@@ -25,6 +25,7 @@
 .leaderboard-score{
   display: flex;
   justify-content: space-around;
+  text-align: center;
 }
 .leaderboard-container{
   background-color: rgba(183, 183, 183, 0.1);
