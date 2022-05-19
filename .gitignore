@@ -136,3 +136,10 @@ node_modules/
 .vscode
 client/.DS_Store
 client/src/.DS_Store
+
+# Local Netlify folder
+.netlify
+
+#env file
+.env
+**/.env
