@@ -37,7 +37,7 @@ const ScorePage = () => {
   }, []);
 
   //posts results to server
-  const sendResults = (w) => {
+  const sendResults = () => {
     return new Promise(async (resolve, reject) => {
       try {
         const options = {
@@ -64,11 +64,14 @@ const ScorePage = () => {
     });
   };
 
+
   useEffect(() => {
     if(score > 0) {
       sendResults();
+      console.log('sent results')
     } else{
       setLoser(true)
+      console.log('loser set')
     }
   }, []);
 
