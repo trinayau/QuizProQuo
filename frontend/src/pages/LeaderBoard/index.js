@@ -41,8 +41,9 @@ function LeaderBoard() {
         key={i}
         style={{display: "flex"}}
       >
-        <p>Name: {leaderboard.username} </p> 
-        <p> Score: {leaderboard.score}</p>
+       
+        <p>{leaderboard.username} </p> 
+        <p> {leaderboard.score}</p>
       </div>
     );
   });
@@ -57,7 +58,17 @@ function LeaderBoard() {
       <button id="backBtn" onClick={homeBtn}>
         <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> HOME
       </button>
+      <button id="start-again" onClick={handleClick}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        PLAY AGAIN
+      </button>
       <h2>Leaderboard </h2>
+  
+      <div className="leaderboard-container">
+      
       <div className="sorting-btns">
           <button onClick={sorting} role="Ascending">
             Sort by Ascending
@@ -67,14 +78,12 @@ function LeaderBoard() {
           </button>
         </div>
       {/* <LeaderBoardTable /> */}
+      <div style={{display: 'flex', justifyContent: 'space-around', textAlign: 'center'}}>
+      <p>Name</p><p>Score</p>
+      </div>
       {allLeaderboard}
-      <button id="start-again" onClick={handleClick}>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        PLAY AGAIN
-      </button>
+
+    </div>
     </div>
   );
 }
