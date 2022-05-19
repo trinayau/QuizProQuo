@@ -12,28 +12,27 @@ const Quiz = () => {
   const question = result[currentQuestion].question;
   const answer = result[currentQuestion].answers;
   const [time, setTime] = useState(15);
-  const [isActive, setIsActive] = useState(true);
+  // const [isActive, setIsActive] = useState(true);
+  // const resetTimer = () => {
+  //   setIsActive(false);
+  // };
 
-  const resetTimer = () => {
-    setIsActive(false);
-  };
-
-  useEffect(() => {
-    let interval = null;
-    if (isActive) {
-      interval = setInterval(() => {
-        setTime((seconds) => seconds - 1);
-      }, 1000);
-    } else if (!isActive) {
-      clearInterval(interval);
-    }
-    return () => clearInterval(interval);
-  }, [isActive, time]);
+  // useEffect(() => {
+  //    let interval = null;
+  //   if (isActive) {
+  //     interval = setInterval(() => {
+  //       setTime((seconds) => seconds - 1);
+  //     }, 1000);
+  //   } else if (!isActive) {
+  //     clearInterval(interval);
+  //   }
+  //   return () => clearInterval(interval);
+  // }, [isActive, time]);
 
   return (
       <div role="quiz-page" id="quiz-page">
-        <p id="timer"> {time} seconds left</p>
-        <Questions question={question} index={index} timer={time} reset={resetTimer} />
+         <p id="timer"> {time} seconds left</p>
+        <Questions question={question} index={index} />
         <Answers answer={answer} index={index} />
       </div>
   );
