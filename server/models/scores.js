@@ -1,4 +1,5 @@
-const db = require("../db/mongoInit");
+const init = require("../db/mongoInit");
+console.log(init, 'db')
 
 //outlining the data
 class Score {
@@ -12,7 +13,8 @@ class Score {
         return new Promise(async(resolve, reject) => {
             try{
                 //console.log("String here happening", init);
-                // const db = await init();
+                const db = await init();
+                
                 const dbData = await db.collection("scoreBoard").find({}).toArray();
                 const allScores = dbData.map((d) => new Score(d));
                 if (!allScores.length){
@@ -31,7 +33,7 @@ class Score {
         static create(newScoreEntry) {
             return new Promise (async (res, rej) => {
                 try{
-                    // const db = await init();
+                    const db = await init();
                     const createScoreEntry = await db
                     .collection("scoreBoard")
                     .insertOne({username: newScoreEntry.player, score: newScoreEntry.score});
