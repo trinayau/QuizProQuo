@@ -11,6 +11,7 @@
 }
 
 #leaderboard h2 {
+  /* margin-top: 100px; */
   font-size: 2rem;
   font-weight: 200;
   font-style: italic;
@@ -21,8 +22,20 @@
   text-transform: uppercase;
   animation: flicker 1.5s infinite alternate;
 }
+.leaderboard-score{
+  display: flex;
+  justify-content: space-around;
+}
+.leaderboard-container{
+  background-color: rgba(183, 183, 183, 0.1);
+  backdrop-filter: blur(5px);
+  padding: 50px 100px 0px 100px; 
+  margin-bottom: 100px;
+  border-radius: 15px;
+}
 
 button#start-again {
+  margin-top: 100px;
   position: relative;
   cursor: pointer;
   font-family: 'Work Sans', sans-serif;
@@ -33,6 +46,7 @@ button#start-again {
   border: 2px solid #ffe4f3;
   border-radius: 1rem;
   color: #ffeff7;
+  margin-bottom: 15px;
 
   -webkit-box-shadow: 0px 0px 44px 1px rgba(248, 74, 167, 1), 0px 0px 20px 1px rgba(248, 74, 167, 1);
   -moz-box-shadow: 0px 0px 44px 1px rgba(248, 74, 167, 1), 0px 0px 20px 1px rgba(248, 74, 167, 1);

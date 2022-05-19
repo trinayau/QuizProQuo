@@ -57,7 +57,17 @@ function LeaderBoard() {
       <button id="backBtn" onClick={homeBtn}>
         <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> HOME
       </button>
+      <button id="start-again" onClick={handleClick}>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        PLAY AGAIN
+      </button>
       <h2>Leaderboard </h2>
+  
+      <div className="leaderboard-container">
+      
       <div className="sorting-btns">
           <button onClick={sorting} role="Ascending">
             Sort by Ascending
@@ -68,13 +78,8 @@ function LeaderBoard() {
         </div>
       {/* <LeaderBoardTable /> */}
       {allLeaderboard}
-      <button id="start-again" onClick={handleClick}>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        PLAY AGAIN
-      </button>
+
+    </div>
     </div>
   );
 }
