@@ -6,6 +6,6 @@ describe("Lobby", () => {
   test("it renders the WaitingRoom component", () => {
     render(<Lobby />);
     const { getByRole } = render(<WaitingRoom />);
-    expect(getByRole("form").toBeInTheDocument());
+    expect(getByRole.toBeInTheDocument());
   });
 });
