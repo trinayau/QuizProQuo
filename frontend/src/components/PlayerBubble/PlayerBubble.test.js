@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 // failing
 describe("player bubble", () => {
   test("it renders a paragraph", () => {
-    renderWithReduxProvider(<PlayerBubble />);
+    render(<PlayerBubble />);
     let p = screen.getByRole("playerbubble");
     expect(p).toBeInTheDocument();
   });
