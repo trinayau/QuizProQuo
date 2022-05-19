@@ -36,9 +36,6 @@ const ScorePage = () => {
       setAllScores(scoreArray);
     });
 
-    // socket.on("update score", res => {
-    //   console.log(res, 'res')
-    // })
   }, []);
 
   const sendResults = (w) => {
@@ -105,7 +102,7 @@ const ScorePage = () => {
             <h3>score</h3> */}
           </div>
 
-          {allScores &&
+          {/* {allScores &&
             allScores.map((p, i) => (
               <ScoreResults
                 className="right"
@@ -114,7 +111,7 @@ const ScorePage = () => {
                 text={p.score}
                 winner={winnerIs(p.username, p.score)}
               />
-            ))}
+            ))} */}
         </div>
         <button onClick={toLeaderboard} id="toLeaderbrd">
           <span></span>
