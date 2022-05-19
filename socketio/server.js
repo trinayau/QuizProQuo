@@ -109,7 +109,7 @@ socket.on('join-room', (config, cb) => {
 
 //messages - chatroom
 socket.on("message sent", ({ nicknameChosen, message, room }) => {
-  io.emit("receive message", nicknameChosen, message);
+  socket.broadcast.emit("receive message", nicknameChosen, message);
   console.log('message received:', 'nickname:',nicknameChosen, 'message:',message, 'room:',room)
 });
 
@@ -124,7 +124,6 @@ socket.on('game-players', (roomName, cb) => {
     cb(
         data
     )
-
 })
 
 
