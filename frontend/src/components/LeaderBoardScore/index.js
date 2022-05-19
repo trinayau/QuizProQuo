@@ -3,9 +3,8 @@ import React from "react";
 const LeaderBoardScore = (props) => {
   return (
     <p role="leaderboardScore" className="leaderboard-score">
-      <span>{props.score.player}</span>
-      
-      <span>{props.score.score}%</span>
+      <span>{props.player}</span>
+      <span>{props.score}%</span>
     </p>
   );
 };

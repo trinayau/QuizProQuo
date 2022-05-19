@@ -10,11 +10,12 @@ import {
   NotFound
 } from "./pages";
 
-function App() {
+const App = () => {
 
   
+  
   return (
-    <div className="App">
+    <div role="App" className="App">
       <header className="App-header"></header>
       <Routes>
         <Route exact path="/" element={<HomePage />} />
