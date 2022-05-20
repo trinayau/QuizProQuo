@@ -11,7 +11,7 @@ const Answers = (props) => {
     dispatch(endQuestions(encodeURIComponent(finalAnswer)));
   };
   const results = useSelector((state) => state.quizReducer.results);
-  console.log(results, 'questions list')
+  console.log(results, "questions list");
   const quizLength = results.length;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,10 +36,10 @@ const Answers = (props) => {
       // <button role="button"  id="cards" onClick={finalAnswer}>
       //   {answers}
       // </button>
-      <div role="answer-button" className="options">
+      <div className="options">
         {answers &&
           answers.map((i) => (
-            <button role="button" id="cards" key={i} onClick={() => finalAnswer(i)}>
+            <button id="cards" key={i} onClick={() => finalAnswer(i)}>
               {i}
             </button>
           ))}
@@ -53,7 +53,12 @@ const Answers = (props) => {
       <div className="options">
         {answers &&
           answers.map((i) => (
-            <button role="button" id="cards" key={i} onClick={() => nextQuestion(i)}>
+            <button
+              role="button"
+              id="cards"
+              key={i}
+              onClick={() => nextQuestion(i)}
+            >
               {i}
             </button>
           ))}

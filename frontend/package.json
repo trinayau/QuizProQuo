@@ -16,6 +16,7 @@
     "create-store": "^1.0.0",
     "font-awesome": "^4.7.0",
     "fortawesome": "0.0.1-security",
+    "jest-fetch-mock": "^3.0.3",
     "react": "^18.1.0",
     "react-countdown": "^2.3.2",
     "react-dom": "^18.1.0",
@@ -30,6 +31,9 @@
     "socket.io-client": "^4.5.0",
     "styled-components": "^5.3.5",
     "web-vitals": "^2.1.4"
+  },
+  "jest": {
+    "resetMocks": false
   },
   "scripts": {
     "start": "react-scripts start",

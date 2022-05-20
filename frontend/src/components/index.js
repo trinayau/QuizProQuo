@@ -5,6 +5,5 @@ export { default as PlayerBubble } from "./PlayerBubble";
 export { default as Players } from "./Players";
 export { default as Questions } from "./Questions";
 export { default as Answers } from "./Answers";
-export { default as ScoreResults } from "./ScoreResults";
 export { default as LeaderBoardScore } from "./LeaderBoardScore";
 export { default as LeaderBoardTable } from "./LeaderBoardTable";
