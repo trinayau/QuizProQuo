@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { socket } from "../../socket/index.js";
-import teary from "./cryinggif.gif";
-import hacker from "./pixels-neon.gif";
+import teary from "./cryinggif.gif"
+import hacker from "./pixels-neon.gif"
+import jane from "./jane.gif"
 
 const ScorePage = () => {
   const navigate = useNavigate();
@@ -99,6 +100,18 @@ const ScorePage = () => {
   const toHome = () => {
     navigate("/");
   };
+  let greeting;
+
+  if(percentage == 0){
+    greeting = <><img src={teary} style={{height: "150px",borderRadius: '15px'}}/><p>If you keep practising, you might actually score some points! Or just keep losing (lol)</p></> 
+  } else if(percentage >0 && percentage <100){
+    greeting =<><img src={hacker} style={{height: "150px",borderRadius: '15px'}}/><p>Wow, you actually scored some points! Slow down hacker! You've been posted to the leaderboard so go check it out my dude xoxo</p></>
+  } else {
+    greeting = <>
+    <img src={jane} style={{height: "150px", borderRadius: '15px'}}/>
+    <p>Enjoy the 100%, I hope it makes you very happy. Dear lord, what a sad little life Jane. You ruined my night completely so you could have the 100%, but I hope now you spend it on getting some lessons in grace and decorum. Because you have all the grace of a reversing dump truck without any tyres on. </p>
+    </>
+  }
   return (
     <div role="scorePage" id="score-page">
       <div id="playerscore">
