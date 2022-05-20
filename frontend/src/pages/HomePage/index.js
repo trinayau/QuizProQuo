@@ -199,6 +199,9 @@ const HomePage = () => {
           ? "No Quizzers Online :("
           : `Quizzers Online: ${playerCount}` && allUsers.map(renderUser)}
       </div>
+      <footer>
+        <p>Open Source Project on <a href="https://github.com/trinayau/QuizProQuo" target="_blank">GitHub</a></p>
+      </footer>
     </div>
   );
 };

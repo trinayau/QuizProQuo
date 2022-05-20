@@ -13,6 +13,11 @@
   position: relative;
      animation: bounce 2s ease infinite;
 }
+
+#playerscore p {
+  padding: 5px 80px 5px 80px;
+  font-size: 15px;
+}
 @keyframes bounce {
   0%, 100% {
     top: 0;
