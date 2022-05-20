@@ -17,7 +17,7 @@ const Questions = (props) => {
   return (
     <div role="question-container" id="question-container">
       <h3 style={{ color: "white" }}>
-        <div aria-label="question-render" id="question-num">
+        <div role="question-render" id="question-num">
           Question {questionNumber}
         </div>
         <br></br>

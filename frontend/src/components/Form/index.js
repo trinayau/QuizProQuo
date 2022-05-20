@@ -106,6 +106,7 @@ const Form = () => {
         <p> NUMBER OF QUESTIONS </p>
         <label htmlFor="number of questionss">
           <input
+          role="number-of-questions"
             value={numberOfQs}
             name="numberOfQs"
             id="number-of-questions"

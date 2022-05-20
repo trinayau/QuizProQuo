@@ -1,10 +1,9 @@
-import { default as Questions } from ".";
+import { default as NotFound } from ".";
 import { screen, render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import store from "../../store";
 import { MemoryRouter as Router } from "react-router-dom";
-
-describe("Questions", () => {
+describe("ScorePage", () => {
   let getResultMock;
 
   beforeEach(() => {
@@ -12,18 +11,14 @@ describe("Questions", () => {
     render(
       <Router>
         <Provider store={store}>
-          <Questions getResult={getResultMock} />
+          <NotFound getResult={getResultMock} index={0} percentage={0} />
         </Provider>
       </Router>
     );
   });
-  test("it renders a question header", () => {
-    const heading = screen.getByRole("question-container");
-    expect(heading).toBeInTheDocument();
-  });
 
-  test("it renders a div", () => {
-    const div = screen.getByRole("question-render");
+  test("it renders a heading with a role of notFound", () => {
+    const div = screen.getByRole("heading");
     expect(div).toBeInTheDocument();
   });
 });

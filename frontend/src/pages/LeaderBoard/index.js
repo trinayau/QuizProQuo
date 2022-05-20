@@ -20,7 +20,7 @@ function LeaderBoard() {
   };
 
   const sorting = (e) => {
-    console.log('sorting')
+    console.log("sorting");
     const value = e.target.textContent;
     const sorted = [...leaderboard].sort((a, b) => {
       if (value === "ASCENDING") {
@@ -30,6 +30,7 @@ function LeaderBoard() {
       }
       return a.score;
     });
+    console.log(sorted);
     setLeaderboard(sorted);
   };
 
@@ -53,13 +54,13 @@ function LeaderBoard() {
   };
 
   return (
-    <div id="leaderboard">
-      <button id="backBtn" onClick={homeBtn}>
+    <div role="leaderboard" id="leaderboard">
+      <button aria-label="backBtn" id="backBtn" onClick={homeBtn}>
         <FontAwesomeIcon icon={faAngleDoubleLeft} bounce /> HOME
       </button>
-      <h2>Leaderboard </h2>
+      <h2 role="leaderboard-heading">Leaderboard </h2>
 
-      <div className="leaderboard-container">
+      <div role="leaderboard-container" className="leaderboard-container">
         <div className="sorting-btns">
           <button onClick={sorting} role="Ascending">
             ASCENDING
