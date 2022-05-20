@@ -407,7 +407,6 @@ button.newQuiz span:nth-child(4) {
 }
 
 footer{
-    position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -427,6 +426,11 @@ footer a{
 
 footer a:hover{
     color:#f403d8
+}
+
+.usersOnline{
+    overflow: auto;
+    max-height: 50px;
 }
 
 /* #welcome .disabled {

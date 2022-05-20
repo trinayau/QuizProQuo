@@ -89,4 +89,8 @@ button#toLeaderbrd:hover::after {
   #score-page {
     background-image: url('../../images/bricks.jpeg');
   }
+  #playerscore p {
+    padding: 5px;
+    text-align: center;
+  }
 }

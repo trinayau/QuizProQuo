@@ -8,7 +8,6 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding-left: 12rem;
   }
   
   #players{
@@ -42,7 +41,6 @@
   @media screen and (max-width: 450px) {
     .lobby {
         background-image: url('../../images/bricks.jpeg');
-        padding: 0rem 1.7rem;
     }
      #players{
     display:flex;

@@ -197,7 +197,7 @@ const HomePage = () => {
       <div>
         {allUsers.length <= 0
           ? "No Quizzers Online :("
-          : `Quizzers Online: ${playerCount}` && allUsers.map(renderUser)}
+          : `Quizzers Online: ${playerCount}` && <div className="usersOnline">{allUsers.map(renderUser)}</div>}
       </div>
       <footer>
         <p>Open Source Project on <a href="https://github.com/trinayau/QuizProQuo" target="_blank">GitHub</a></p>

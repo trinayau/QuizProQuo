@@ -50,7 +50,17 @@
     border-style: none;
     padding: 1em;
     margin: 0.2em;
+    
   }
+  
+  .submitBtn{
+      background-color: #91f7fe;
+      transition: background-color ease-in-out 0.2s;
+  }
+
+  .submitBtn:hover{
+    background-color: #ea62cc;
+}
 
   #room-chat {
     padding: 1em;

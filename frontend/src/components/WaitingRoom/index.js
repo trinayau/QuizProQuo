@@ -14,19 +14,22 @@ const Lobby = () => {
     const [message, setMessage] = useState([]);
     const [newMessage, setNewMessage] = useState("");
 
-    useEffect(() => {  
-        socket.emit('game-players', room, (res) => {
-            const usernames = res.map(el => el.username)
-            setPlayers(usernames)
-        })
-
-        
-    }, [newPlayer]);
-
+    //Server emits 'new peon' when new player joins
+    //Sets new player with username of new user
     socket.on('new peon', user => {
       setNewPlayer(user)
   })
 
+  //Client emits room to server and receives list of users
+  //Sets player array
+    useEffect(() => {  
+        socket.emit('game-players', room, (res) => {
+            const usernames = res.map(resp => resp.username)
+            setPlayers(usernames)
+        })
+    }, [newPlayer]);
+
+  //When newMessage array updates with new message, add to message array
     useEffect(()=>{
         if(newMessage!==""){
         setMessage((prevState) => [
@@ -35,10 +38,8 @@ const Lobby = () => {
           ]);
         }
     },[newMessage])
-    
-    useEffect(()=> {
-        setPlayers([...players, newPlayer])
-    },[newPlayer])
+
+ 
 
     socket.on('receive message', (nicknameChosen, message)=>{
         setNewMessage({nickname: nicknameChosen, message: message})
@@ -102,7 +103,7 @@ const Lobby = () => {
               maxLength="100"
               placeholder="Write a message..."
             />
-            <input type="submit" />
+            <input type="submit" className='submitBtn'/>
           </form>
         </div>
             <div id="players">
