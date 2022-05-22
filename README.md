@@ -19,9 +19,9 @@ Quiz-Pro-Quo is MERN fullstack application.
  * For client, `cd frontend` and `npm run start`, it should automatically load on `http://localhost:3000`
 
 #### Server-side
- * For server, `cd server` and `npm run dev`  
- To use docker:
- To start server and use docker compose for server container,  open terminal and run `bash _scripts/startDev.sh`
+ * For server, `cd server`, `npm install` and `npm run dev`  
+ To use docker:  
+ To start server with docker open terminal, make sure you are in root folder and run `bash _scripts/startDev.sh`
  * Starts API and DB services
  * Serves API on `http://localhost:3001`  
  * It is not possible to fully run our API and DB locally due to hidden process.env variables, feel free to substitute the Mongo URI in with your own in `server/db/mongoInit.js`!
@@ -33,6 +33,7 @@ Quiz-Pro-Quo is MERN fullstack application.
 #### Websocket Server
  To set up socket server:  
 * `cd socketio`  
+* `npm install`
 * `npm run dev`
 * We separated our socket server out to prevent merge conflicts between Trina + Diren working on websockets and Andrew working on the database
 * It is fully possible to integrate this into the API server to prevent having to deploy our servers separately on Heroku, which we did this time due to time constraints and also to improve Heroku deployment knowledge
