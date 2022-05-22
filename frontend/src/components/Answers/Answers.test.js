@@ -13,21 +13,13 @@ describe("Answers", () => {
     render(
       <Router>
         <Provider store={store}>
-          <Answers getResult={getResultMock} />
+          <Answers answer={["a"]} getResult={getResultMock} index={0} />
         </Provider>
       </Router>
     );
   });
   test("it renders a button for the answer cards", () => {
-    const button = screen.getByRole("answer-button");
+    const button = screen.getByRole("button", { name: "a" });
     expect(button).toBeInTheDocument();
   });
-  //   test("it shows the incorrect answer in the results", async () => {
-  //     const incorrectAnswer = await screen.findByText("London");
-  //     expect(incorrectAnswer).toBeInTheDocument();
-  //   });
-  //   test("it shows the correct answer in the results", async () => {
-  //     const correct = await screen.findByText("Paris");
-  //     expect(correct).toBeInTheDocument();
-  //   });
 });

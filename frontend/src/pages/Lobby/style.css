@@ -18,25 +18,50 @@
   
   body {
     color: whitesmoke;
-
-    text-align: center;
-  }
-  
-  .lobby h2 {
-    font-size: 5rem;
-    font-weight: 200;
-    font-style: italic;
-    color: #fff;
-    padding: 2rem 3rem 3rem;
-    border: 0.4rem solid #fff;
-    border-radius: 2rem;
-    text-transform: uppercase;
-    animation: flicker 1.5s infinite alternate;
   }
 
-  .lobby p {
-    font-family: var(--content-text);
+.lobby {
+  background-image: url('../../images/bricks.jpeg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 12rem;
+}
+
+#players {
+  display: flex;
+  justify-content: space-between;
+  min-width: 500px;
+}
+
+.lobby h2 {
+  font-size: 5rem;
+  font-weight: 200;
+  font-style: italic;
+  color: #fff;
+  padding: 2rem 3rem 3rem;
+  border: 0.4rem solid #fff;
+  border-radius: 2rem;
+  text-transform: uppercase;
+  animation: flicker 1.5s infinite alternate;
+  text-align: center;
+}
+
+.lobby p {
+  font-family: var(--content-text);
+}
+
+@media screen and (max-width: 450px) {
+  .lobby {
+    background-image: url('../../images/bricks.jpeg');
+    padding: 0rem 1.7rem;
   }
+}
 
   @media screen and (max-width: 450px) {
     .lobby {
@@ -47,8 +72,8 @@
     justify-content: space-between;
     min-width: 200px;
   }
+
   .lobby h2 {
     font-size: 3.5rem;
   }
-  }
-  
+}

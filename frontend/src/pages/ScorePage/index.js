@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { socket } from "../../socket/index.js";
-import { ScoreResults } from "../../components";
 import teary from "./cryinggif.gif"
 import hacker from "./pixels-neon.gif"
 import jane from "./jane.gif"
@@ -19,7 +18,7 @@ const ScorePage = () => {
   const [players, setPlayers] = useState("");
   const room = useSelector((state) => state.user.room);
   const [winner, setWinner] = useState("");
-  const [loser, setLoser] = useState(false)
+  const [loser, setLoser] = useState(false);
 
   useEffect(() => {
     let config = {
@@ -36,7 +35,6 @@ const ScorePage = () => {
       console.log(scoreArray, "scoreArray");
       setAllScores(scoreArray);
     });
-
   }, []);
 
   //posts results to server
@@ -67,14 +65,13 @@ const ScorePage = () => {
     });
   };
 
-
   useEffect(() => {
-    if(score > 0) {
+    if (score > 0) {
       sendResults();
-      console.log('sent results')
-    } else{
-      setLoser(true)
-      console.log('loser set')
+      console.log("sent results");
+    } else {
+      setLoser(true);
+      console.log("loser set");
     }
   }, []);
 
@@ -88,7 +85,7 @@ const ScorePage = () => {
       if (highest <= score) {
         highest = score;
         str = "WINNER!";
-        setWinner(player)
+        setWinner(player);
       } else {
         str = "LOSER (lol)";
       }
@@ -116,42 +113,51 @@ const ScorePage = () => {
     </>
   }
   return (
-    <div id="score-page">
+    <div role="scorePage" id="score-page">
       <div id="playerscore">
         <h2>You scored: {percentage}% </h2>
-        {/* {loser ? <><img src={teary} style={{height: "150px",borderRadius: '15px'}}/><p>If you keep practising, you might actually score some points! Or just keep losing (lol)</p></> : <><img src={hacker} style={{height: "150px",borderRadius: '15px'}}/><p>Wow, you actually scored some points! Slow down hacker! You've been posted to the leaderboard so go check it out xoxo</p></>} */}
-        {greeting}
-
-      
-{/* commented out because it's not currently working. todo */}
+        {loser ? (
+          <>
+            <img
+              src={teary}
+              style={{ height: "150px", borderRadius: "15px" }}
+            />
+            <p>
+              If you keep practising, you might actually score some points! Or
+              just keep losing (lol)
+            </p>
+          </>
+        ) : (
+          <>
+            <img
+              src={hacker}
+              style={{ height: "150px", borderRadius: "15px" }}
+            />
+            <p>
+              Wow, you actually scored some points! Slow down hacker! You've
+              been posted to the leaderboard so go check it out xoxo
+            </p>
+          </>
+        )}
         <div className="score-banner">
           <div className="wrapper">
-            {/* <h3>player</h3>
-            <h3>score</h3> */}
           </div>
-
-          {/* {allScores &&
-            allScores.map((p, i) => (
-              <ScoreResults
-                className="right"
-                player={p.username}
-                key={i}
-                text={p.score}
-                winner={winnerIs(p.username, p.score)}
-              />
-            ))} */}
         </div>
-        {loser ?  <button onClick={toHome} id="toLeaderbrd"><span></span>
-          <span></span>
-          <span></span>
-          <span></span>Try Again
-        </button>
-        : 
-        <button onClick={toLeaderboard} id="toLeaderbrd"><span></span>
-          <span></span>
-          <span></span>
-          <span></span>Go to Leaderboard
-        </button>}
+        {loser ? (
+          <button onClick={toHome} id="toLeaderbrd">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>Try Again
+          </button>
+        ) : (
+          <button onClick={toLeaderboard} id="toLeaderbrd">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>Go to Leaderboard
+          </button>
+        )}
       </div>
     </div>
   );
