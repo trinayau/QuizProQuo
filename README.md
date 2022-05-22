@@ -1,4 +1,8 @@
 # QuizProQuo
+[![Netlify Status](https://api.netlify.com/api/v1/badges/93c5450c-e466-4130-8068-adfd7764e196/deploy-status)](https://app.netlify.com/sites/quiz-pro-quo/deploys)
+![Heroku](https://pyheroku-badge.herokuapp.com/?app=quizpq&style=flat)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat&logo=appveyor)](https://opensource.org/licenses/MIT)
+
  Lap 3 quiz website built with React, MongoDB, Express and Node.js
  Project team consists of:
  * [Andrew](https://github.com/akennedy205) - API and Database
