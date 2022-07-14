@@ -8,7 +8,7 @@
  * [Andrew](https://github.com/akennedy205) - API and Database
  * [Diren](https://github.com/Dnayir) - Sockets and logic
  * [Yusra](https://github.com/yusra-tahir) - Front end design
- * [Trina](https://github.com/trinayau) - Sockets and logic, front end design
+ * [Trina](https://github.com/trinayau) - Sockets and back end, front end design
 
 ## Project Description
 This is a Lap 3 futureproof group project to make a quiz website using MERN stack, socket.io and OpenTriviaDB API.
