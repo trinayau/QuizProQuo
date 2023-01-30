@@ -1,5 +1,4 @@
 const init = require("../db/mongoInit");
-console.log(init, 'db')
 
 //outlining the data
 class Score {

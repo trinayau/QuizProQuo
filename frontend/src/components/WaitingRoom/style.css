@@ -39,7 +39,6 @@
     border-style: none;
     padding: 1em;
     margin: 0.2em;
-<<<<<<< HEAD
     
   }
   
@@ -50,8 +49,6 @@
 
   .submitBtn:hover{
     background-color: #ea62cc;
-=======
->>>>>>> 825ea2282af641daead0487a6b8e3fbad14c7b4c
 }
 
 #room-chat {
