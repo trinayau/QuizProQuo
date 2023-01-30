@@ -1,6 +1,6 @@
 
 import io from "socket.io-client";
-const serverEndpoint = "https://quizpqsockets.herokuapp.com/";
+const serverEndpoint = "https://quizpq-sockets.onrender.com";
 const socket = io(serverEndpoint);
 
 export { socket };
