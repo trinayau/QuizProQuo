@@ -9,7 +9,7 @@ function LeaderBoard() {
   const [leaderboard, setLeaderboard] = useState([]);
 
   useEffect(() => {
-    fetch("https://quizpq.herokuapp.com/scoreboard")
+    fetch("https://quizproquo-api.onrender.com/scoreboard")
       .then((res) => res.json())
       .then((data) => setLeaderboard(data));
   }, []);

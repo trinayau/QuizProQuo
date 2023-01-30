@@ -50,7 +50,7 @@ const ScorePage = () => {
         };
 
         const { data } = await axios.post(
-          `https://quizpq.herokuapp.com/scoreboard`,
+          `https://quizproquo-api.onrender.com/scoreboard`,
           results,
           options
         );
